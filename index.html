@@ -653,6 +653,40 @@
       .lumarium-video{width:min(100%,320px);}
     }
 
+
+    .lumarium-case-section{padding:0 0 34px;}
+    .websites-section{padding:22px 0 92px;}
+    .websites-shell{position:relative;overflow:visible;}
+    .websites-shell:before{content:none;}
+    .websites-head{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,420px);gap:28px;align-items:end;margin-bottom:20px;}
+    .websites-head h2{font-size:clamp(26px,2.8vw,40px);}
+    .websites-carousel{position:relative;z-index:1;}
+    .websites-gallery{position:relative;display:flex;gap:14px;overflow:hidden;scroll-behavior:smooth;scroll-snap-type:none;padding:2px 0 20px;scrollbar-width:none;}
+    .websites-gallery::-webkit-scrollbar{display:none;}
+    .website-card{flex:0 0 min(336px,82vw);border:1px solid rgba(218,226,239,.11);border-radius:24px;background:rgba(5,8,12,.58);overflow:hidden;transition:transform .25s ease,border-color .25s ease,background .25s ease,box-shadow .25s ease;}
+    .website-card:hover,.website-card.active{transform:translateY(-4px);border-color:rgba(198,72,86,.28);background:rgba(255,255,255,.042);box-shadow:0 18px 58px rgba(0,0,0,.26);}
+    .website-shot{display:block;position:relative;aspect-ratio:16/10;background:#06080c;overflow:hidden;}
+    .website-shot img{width:100%;height:100%;display:block;object-fit:cover;object-position:top center;filter:saturate(.98) contrast(1.02);transition:transform .42s ease,filter .42s ease;}
+    .website-card:hover .website-shot img,.website-card.active .website-shot img{transform:scale(1.045);filter:saturate(1.06) contrast(1.05);}
+    .website-shot:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 54%,rgba(3,5,8,.56));pointer-events:none;}
+    .website-body{padding:18px 18px 20px;}
+    .website-top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:10px;}
+    .website-top h3{margin:0;color:#fff;font-family:"Manrope","Inter",sans-serif;font-size:19px;line-height:1.2;font-weight:450;letter-spacing:-.03em;}
+    .website-link{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;border:1px solid rgba(218,226,239,.12);border-radius:50%;color:#cbd5e4;background:rgba(255,255,255,.03);transition:.22s ease;}
+    .website-link:hover{color:#fff;border-color:rgba(198,72,86,.36);background:rgba(157,38,53,.12);transform:translateY(-2px);}
+    .website-body p{margin:0;color:#aeb9c8;font-size:14.4px;line-height:1.62;font-weight:300;letter-spacing:-.004em;}
+    .website-arrow{position:absolute;top:42%;z-index:3;width:44px;height:44px;border:1px solid rgba(218,226,239,.16);border-radius:50%;display:grid;place-items:center;background:rgba(5,8,12,.78);backdrop-filter:blur(14px);color:#fff;font-size:24px;line-height:1;cursor:pointer;transition:transform .22s ease,border-color .22s ease,background .22s ease,opacity .22s ease;}
+    .website-arrow:hover{transform:translateY(-2px);border-color:rgba(198,72,86,.38);background:rgba(157,38,53,.18);}
+    .website-arrow.prev{left:-22px;}
+    .website-arrow.next{right:-22px;}
+    .content-social{position:relative;z-index:1;margin:8px 0 0;padding-top:18px;border-top:1px solid rgba(218,226,239,.09);display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.9fr);gap:20px;align-items:center;}
+    .content-social p{margin:0;color:#aeb9c8;font-size:14.8px;line-height:1.65;font-weight:300;}
+    .content-links{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end;}
+    .content-links a{display:inline-flex;padding:9px 12px;border:1px solid rgba(218,226,239,.11);border-radius:999px;background:rgba(255,255,255,.026);color:#d8e0eb;font-size:13px;line-height:1;transition:.22s ease;}
+    .content-links a:hover{color:#fff;border-color:rgba(198,72,86,.34);background:rgba(157,38,53,.11);transform:translateY(-2px);}
+    @media(max-width:820px){.websites-head,.content-social{grid-template-columns:1fr}.content-links{justify-content:flex-start}.websites-gallery{padding:2px 0 20px}.content-social{margin-top:8px}.website-arrow.prev{left:8px}.website-arrow.next{right:8px}}
+    @media(max-width:640px){.lumarium-case-section{padding:0 0 26px}.websites-section{padding:16px 0 58px}.website-card{flex-basis:86vw}.website-body{padding:16px}.website-top h3{font-size:18px}.website-arrow{width:38px;height:38px;font-size:21px;top:38%;}}
+
   </style>
 </head>
 <body>
@@ -832,6 +866,58 @@
           </div>
           <div class="lumarium-video">
             <iframe src="https://www.youtube.com/embed/LSovMIervPk" title="Lumarium.art — вертикальное видео" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="websites-section">
+      <div class="container">
+        <div class="websites-shell reveal">
+          <div class="websites-head">
+            <div><div class="kicker">Сайты и контент</div><h2>Сайты, которые я делал и развивал</h2></div>
+            <p class="section-copy">Подборка коммерческих сайтов, продуктовых страниц и контентных площадок: от B2B-производства до 3D-направлений, обучения и цифровых сервисов.</p>
+          </div>
+          <div class="websites-carousel" aria-label="Галерея сайтов">
+            <button class="website-arrow prev" type="button" aria-label="Предыдущий сайт">‹</button>
+            <div class="websites-gallery">
+            <article class="website-card active">
+              <a class="website-shot" href="https://rtiplast.kz/" target="_blank" rel="noreferrer"><img src="https://i.postimg.cc/k4vrbPD2/Snimok-ekrana-2026-07-02-143814.png" alt="rtiplast.kz" loading="lazy"></a>
+              <div class="website-body"><div class="website-top"><h3>rtiplast.kz</h3><a class="website-link" href="https://rtiplast.kz/" target="_blank" rel="noreferrer" aria-label="Открыть rtiplast.kz">↗</a></div><p>Сайт для производственного направления с акцентом на структуру услуг, доверие и понятную подачу B2B-предложения.</p></div>
+            </article>
+            <article class="website-card">
+              <a class="website-shot" href="https://neopren.kz/" target="_blank" rel="noreferrer"><img src="https://i.postimg.cc/ydBtBpn9/Snimok-ekrana-2026-07-02-143734.png" alt="neopren.kz" loading="lazy"></a>
+              <div class="website-body"><div class="website-top"><h3>neopren.kz</h3><a class="website-link" href="https://neopren.kz/" target="_blank" rel="noreferrer" aria-label="Открыть neopren.kz">↗</a></div><p>Коммерческий сайт для нишевого продукта: короткий путь к заявке, понятная навигация и визуальная упаковка предложения.</p></div>
+            </article>
+            <article class="website-card">
+              <a class="website-shot" href="https://3dnika.com/" target="_blank" rel="noreferrer"><img src="https://i.postimg.cc/3JW6Kvjg/Snimok-ekrana-2026-07-02-143548.png" alt="3dnika.com" loading="lazy"></a>
+              <div class="website-body"><div class="website-top"><h3>3dnika.com</h3><a class="website-link" href="https://3dnika.com/" target="_blank" rel="noreferrer" aria-label="Открыть 3dnika.com">↗</a></div><p>Продуктовая страница AI-агента для 3D-инженеров и конструкторов с фокусом на возможности сервиса и сценарии применения.</p></div>
+            </article>
+            <article class="website-card">
+              <a class="website-shot" href="https://teleport3d.kz/" target="_blank" rel="noreferrer"><img src="https://i.postimg.cc/vBQqCgHb/Snimok-ekrana-2026-07-02-143516.png" alt="teleport3d.kz" loading="lazy"></a>
+              <div class="website-body"><div class="website-top"><h3>teleport3d.kz</h3><a class="website-link" href="https://teleport3d.kz/" target="_blank" rel="noreferrer" aria-label="Открыть teleport3d.kz">↗</a></div><p>Сайт 3D-направления: услуги, продуктовая логика, подача экспертности и понятный вход для клиентов.</p></div>
+            </article>
+            <article class="website-card">
+              <a class="website-shot" href="https://teleport3d.com/" target="_blank" rel="noreferrer"><img src="https://i.postimg.cc/L4QC0sdf/Snimok-ekrana-2026-07-02-143618.png" alt="teleport3d.com" loading="lazy"></a>
+              <div class="website-body"><div class="website-top"><h3>teleport3d.com</h3><a class="website-link" href="https://teleport3d.com/" target="_blank" rel="noreferrer" aria-label="Открыть teleport3d.com">↗</a></div><p>Международная витрина 3D-проекта: лаконичная упаковка продукта, визуальные акценты и быстрый переход к сути предложения.</p></div>
+            </article>
+            <article class="website-card">
+              <a class="website-shot" href="https://teleportschool.getcourse.ru/3dmodeling" target="_blank" rel="noreferrer"><img src="https://i.postimg.cc/4Nh5Lbbr/Snimok-ekrana-2026-07-02-143702.png" alt="teleportschool.getcourse.ru/3dmodeling" loading="lazy"></a>
+              <div class="website-body"><div class="website-top"><h3>3D Modeling School</h3><a class="website-link" href="https://teleportschool.getcourse.ru/3dmodeling" target="_blank" rel="noreferrer" aria-label="Открыть страницу курса 3D Modeling School">↗</a></div><p>Посадочная страница образовательного продукта по 3D-моделированию: структура курса, оффер и путь пользователя к обучению.</p></div>
+            </article>
+            </div>
+            <button class="website-arrow next" type="button" aria-label="Следующий сайт">›</button>
+          </div>
+          <div class="content-social">
+            <p>Также развивал контент для соцсетей: визуальная подача, экспертные публикации, короткие видео, продуктовые материалы и коммуникация вокруг 3D-направления.</p>
+            <div class="content-links">
+              <a href="https://www.instagram.com/kz.transit/" target="_blank" rel="noreferrer">kz.transit</a>
+              <a href="https://www.instagram.com/teleport3d/" target="_blank" rel="noreferrer">teleport3d</a>
+              <a href="https://www.tiktok.com/@kz.transit" target="_blank" rel="noreferrer">@kz.transit</a>
+              <a href="https://www.youtube.com/@3dkztransit" target="_blank" rel="noreferrer">3D KZ Transit</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1034,6 +1120,57 @@
       });
     },{threshold:.56});
     caseCards.forEach(card=>caseObserver.observe(card));
+
+
+    const websitesGallery = document.querySelector('.websites-gallery');
+    const websiteCards = document.querySelectorAll('.website-card');
+    const websitePrev = document.querySelector('.website-arrow.prev');
+    const websiteNext = document.querySelector('.website-arrow.next');
+    let websiteAutoTimer;
+
+    function setActiveWebsite(index){
+      websiteCards.forEach((item, i)=>item.classList.toggle('active', i === index));
+    }
+
+    function currentWebsiteIndex(){
+      if(!websitesGallery || !websiteCards.length) return 0;
+      const galleryLeft = websitesGallery.scrollLeft;
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+      websiteCards.forEach((card, index)=>{
+        const distance = Math.abs(card.offsetLeft - galleryLeft);
+        if(distance < closestDistance){closestDistance = distance;closestIndex = index;}
+      });
+      return closestIndex;
+    }
+
+    function scrollWebsite(direction = 1){
+      if(!websitesGallery || !websiteCards.length) return;
+      const current = currentWebsiteIndex();
+      const nextIndex = (current + direction + websiteCards.length) % websiteCards.length;
+      websitesGallery.scrollTo({left: websiteCards[nextIndex].offsetLeft, behavior:'smooth'});
+      setActiveWebsite(nextIndex);
+    }
+
+    function startWebsiteAuto(){
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      clearInterval(websiteAutoTimer);
+      websiteAutoTimer = setInterval(()=>scrollWebsite(1), 3600);
+    }
+
+    websiteCards.forEach((card, index)=>{
+      card.addEventListener('click',()=>setActiveWebsite(index));
+    });
+    if(websitePrev) websitePrev.addEventListener('click',()=>{scrollWebsite(-1);startWebsiteAuto();});
+    if(websiteNext) websiteNext.addEventListener('click',()=>{scrollWebsite(1);startWebsiteAuto();});
+    if(websitesGallery){
+      websitesGallery.addEventListener('mouseenter',()=>clearInterval(websiteAutoTimer));
+      websitesGallery.addEventListener('mouseleave',startWebsiteAuto);
+      websitesGallery.addEventListener('focusin',()=>clearInterval(websiteAutoTimer));
+      websitesGallery.addEventListener('focusout',startWebsiteAuto);
+      websitesGallery.addEventListener('scroll',()=>setActiveWebsite(currentWebsiteIndex()), {passive:true});
+      startWebsiteAuto();
+    }
 
     const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
     const sections = [...document.querySelectorAll('main section[id], footer[id]')];
