@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Дмитрий Алексеев — внедрение ИИ в бизнес</title>
+  <meta name="description" content="Дмитрий Алексеев — внедрение ИИ в предприятия, ИИ-агенты, автоматизация коммерческих отделов, CRM, прототип и B2B-маркетинг." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#050608;
+      --bg2:#080b10;
+      --surface:#0c1017;
+      --surface2:#101620;
+      --surface3:#151c28;
+      --ink:#f4f6fb;
+      --text:#dce3ee;
+      --muted:#9aa7b8;
+      --muted2:#657184;
+      --line:rgba(218,226,239,.115);
+      --line2:rgba(218,226,239,.19);
+      --blue:#142946;
+      --blue2:#1b3e68;
+      --red:#8e2638;
+      --red2:#b83a4b;
+      --white:#ffffff;
+      --soft:#eef4ff;
+      --shadow:0 32px 110px rgba(0,0,0,.52);
+      --radius:28px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--bg)}
+    body{
+      margin:0;
+      font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 50% -12%, rgba(27,62,104,.34), transparent 38%),
+        radial-gradient(circle at 12% 18%, rgba(120,32,48,.10), transparent 28%),
+        radial-gradient(circle at 92% 34%, rgba(20,41,70,.30), transparent 32%),
+        linear-gradient(180deg,#050608 0%,#080b10 42%,#050608 100%);
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      opacity:.052;
+      mix-blend-mode:soft-light;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.25' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.58'/%3E%3C/svg%3E");
+    }
+    body:after{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      background:linear-gradient(180deg,rgba(255,255,255,.025),transparent 22%,rgba(0,0,0,.22));
+    }
+    a{color:inherit;text-decoration:none}
+
+    .scroll-progress{position:fixed;left:0;top:0;height:2px;width:0;background:linear-gradient(90deg,#ffffff,#2d5f9f,#a73446);z-index:60;box-shadow:0 0 20px rgba(45,95,159,.45)}
+    .hero-proof{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:24px auto 0;max-width:860px}
+    .hero-proof span{padding:9px 12px;border:1px solid rgba(255,255,255,.10);border-radius:999px;background:rgba(255,255,255,.026);color:#9eabbc;font-size:12.5px;font-weight:300;line-height:1.35;transition:.22s ease}
+    .hero-proof span:hover{color:#fff;border-color:rgba(45,95,159,.34);background:rgba(45,95,159,.12);transform:translateY(-2px)}
+    .container{width:min(var(--max),calc(100% - 40px));margin:0 auto;position:relative;z-index:1}
+    .nav{position:sticky;top:0;z-index:30;background:rgba(5,6,8,.74);backdrop-filter:blur(22px);border-bottom:1px solid rgba(218,226,239,.08)}
+    .nav-inner{height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;color:var(--ink);font-size:15px;font-weight:470;letter-spacing:-.012em}
+    .brand span{position:relative;padding-left:14px}
+    .brand span:before{content:"";position:absolute;left:0;top:50%;width:5px;height:5px;border-radius:50%;background:#9f3144;box-shadow:0 0 0 5px rgba(159,49,68,.10);transform:translateY(-50%)}
+    .brand:hover span{color:#fff}
+    .nav-links{display:flex;align-items:center;gap:24px;color:#9ba7b6;font-size:13.5px;font-weight:400}
+    .nav-links a{transition:.22s ease}
+    .nav-links a:hover,.nav-links a.active-link{color:#fff}
+    .nav-cta{padding:10px 15px;border:1px solid rgba(198,72,86,.34);border-radius:999px;color:#fff!important;background:rgba(157,38,53,.10)}
+
+    .hero{min-height:calc(78vh - 74px);display:flex;align-items:center;padding:82px 0 42px;position:relative}
+    .hero:before{content:"";position:absolute;left:50%;top:49%;width:min(820px,92vw);height:min(600px,72vw);transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(20,41,70,.33),transparent 63%);filter:blur(12px);opacity:.78;z-index:0}
+    .hero-center{max-width:960px;margin:0 auto;text-align:center;position:relative;z-index:1}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:24px;padding:8px 13px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(255,255,255,.032);color:#b8c4d4;font-size:11px;font-weight:500;letter-spacing:.11em;text-transform:uppercase}
+    .eyebrow i{width:6px;height:6px;border-radius:999px;background:var(--red2);box-shadow:0 0 0 5px rgba(198,72,86,.11)}
+    h1,h2,h3,p{margin-top:0}
+    h1{margin:0 auto 22px;max-width:940px;font-family:"Manrope","Inter",sans-serif;font-size:clamp(46px,5.45vw,80px);line-height:1.02;font-weight:400;letter-spacing:-.062em;color:#fff}
+    .accent{color:#fff;position:relative;white-space:normal}
+    .accent:after{content:"";position:absolute;left:.02em;right:.02em;bottom:.08em;height:.10em;background:linear-gradient(90deg,transparent,rgba(157,38,53,.72),transparent);z-index:-1;border-radius:999px}
+    .lead{max-width:840px;margin:0 auto;color:#b6c1d0;font-size:clamp(16.5px,1.55vw,19px);line-height:1.74;font-weight:300;letter-spacing:-.018em}
+    .hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:34px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;font-size:14px;font-weight:450;letter-spacing:.005em;transition:transform .22s ease,border-color .22s ease,background .22s ease,color .22s ease,box-shadow .22s ease}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:#fff;color:#06080c;border:1px solid #fff;box-shadow:0 10px 34px rgba(255,255,255,.08)}
+    .btn-primary:hover{box-shadow:0 14px 44px rgba(255,255,255,.13)}
+    .btn-ghost{border:1px solid rgba(255,255,255,.16);color:#e8eef8;background:rgba(255,255,255,.03)}
+    .btn-ghost:hover{border-color:rgba(198,72,86,.42);background:rgba(157,38,53,.10)}
+    .hero-note{margin-top:30px;color:#768397;font-size:12px;font-weight:400;letter-spacing:.10em;text-transform:uppercase}
+
+    .hero-title{position:relative}
+    .title-line{display:block}
+    .title-accent{display:inline-block;position:relative;color:#fff;text-shadow:0 0 34px rgba(45,95,159,.20)}
+    .title-accent:before{content:"";position:absolute;left:-.04em;right:-.04em;bottom:.03em;height:.18em;border-radius:999px;background:linear-gradient(90deg,rgba(45,95,159,.34),rgba(158,49,68,.50),rgba(255,255,255,.18));z-index:-1;transform-origin:left;animation:titleUnderline 3.8s ease-in-out infinite}
+    .title-accent:after{content:"";position:absolute;inset:-.10em -.08em;border-radius:18px;background:radial-gradient(circle at var(--hx,50%) var(--hy,50%),rgba(255,255,255,.13),transparent 38%);opacity:.0;transition:opacity .25s ease;z-index:-2}
+    .hero-title:hover .title-accent:after{opacity:1}
+    @keyframes titleUnderline{0%,100%{transform:scaleX(.58);opacity:.42}50%{transform:scaleX(1);opacity:.88}}
+    .hero-rail{position:relative;margin:32px auto 0;max-width:900px;padding:17px;border:1px solid rgba(218,226,239,.12);border-radius:26px;background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.018));box-shadow:0 28px 90px rgba(0,0,0,.24);overflow:hidden;isolation:isolate}
+    .hero-rail:before{content:"";position:absolute;inset:-1px;background:linear-gradient(90deg,transparent,rgba(45,95,159,.16),rgba(159,49,68,.18),transparent);transform:translateX(-58%);animation:railMove 6s ease-in-out infinite;z-index:-1}
+    @keyframes railMove{0%,100%{transform:translateX(-62%)}50%{transform:translateX(62%)}}
+    .hero-rail-inner{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+    .hero-chip{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid rgba(255,255,255,.11);border-radius:999px;background:rgba(4,7,12,.55);color:#c9d3e2;font-size:13px;font-weight:350;line-height:1.2;transition:transform .22s ease,border-color .22s ease,background .22s ease,color .22s ease}
+    .hero-chip:before{content:"";width:6px;height:6px;border-radius:50%;background:#315f9b;box-shadow:0 0 0 4px rgba(49,95,155,.09)}
+    .hero-chip:nth-child(2):before,.hero-chip:nth-child(4):before{background:#9f3144;box-shadow:0 0 0 4px rgba(159,49,68,.10)}
+    .hero-chip:hover{transform:translateY(-2px);color:#fff;border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.055)}
+    .hero-dynamic{margin:18px auto 0;min-height:25px;color:#8f9caf;font-size:14px;font-weight:300;letter-spacing:-.005em}
+    .hero-dynamic b{color:#fff;font-weight:420}
+
+    .hero-system{margin:38px auto 0;max-width:980px;position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:14px;text-align:left;perspective:1100px}
+    .hero-system:before{content:"";position:absolute;inset:-1px;border-radius:30px;background:linear-gradient(135deg,rgba(255,255,255,.20),rgba(46,92,151,.30),rgba(172,42,61,.26),rgba(255,255,255,.06));opacity:.35;filter:blur(18px);z-index:-1;transition:.35s ease}
+    .hero-system:hover:before{opacity:.52;filter:blur(22px)}
+    .hero-panel{position:relative;min-height:214px;padding:24px;border:1px solid rgba(218,226,239,.13);border-radius:28px;background:linear-gradient(180deg,rgba(14,19,29,.86),rgba(6,8,12,.92));box-shadow:0 26px 72px rgba(0,0,0,.34);overflow:hidden;transform-style:preserve-3d;transition:transform .28s ease,border-color .28s ease,background .28s ease}
+    .hero-panel:hover{border-color:rgba(255,255,255,.22);background:linear-gradient(180deg,rgba(17,24,36,.92),rgba(7,9,14,.96))}
+    .hero-panel:after{content:"";position:absolute;inset:auto -18% -44% 38%;height:120px;background:radial-gradient(circle,rgba(52,103,166,.26),transparent 64%);filter:blur(16px);pointer-events:none}
+    .hero-panel-title{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px;color:#fff;font-size:15px;font-weight:520;letter-spacing:-.01em}
+    .hero-panel-title span:last-child{color:#6f7c8f;font-size:12px;font-weight:400;text-transform:uppercase;letter-spacing:.12em}
+    .hero-flow{display:grid;gap:10px}
+    .flow-line{display:grid;grid-template-columns:94px 1fr auto;align-items:center;gap:14px;padding:11px 12px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:rgba(255,255,255,.032);transition:.24s ease}
+    .flow-line:hover{transform:translateX(4px);border-color:rgba(46,92,151,.36);background:rgba(46,92,151,.08)}
+    .flow-line b{color:#fff;font-size:13px;font-weight:520;white-space:nowrap}
+    .flow-line span{color:#aab7c7;font-size:13px;line-height:1.35;font-weight:300}
+    .flow-dot{width:7px;height:7px;border-radius:50%;background:#a92b42;box-shadow:0 0 0 6px rgba(169,43,66,.10)}
+    .hero-orbit{position:relative;min-height:214px;padding:22px;border:1px solid rgba(218,226,239,.13);border-radius:28px;background:linear-gradient(160deg,rgba(11,16,24,.90),rgba(4,6,10,.94));overflow:hidden;box-shadow:0 26px 72px rgba(0,0,0,.30)}
+    .hero-orbit:before{content:"";position:absolute;left:50%;top:50%;width:190px;height:190px;border:1px solid rgba(255,255,255,.08);border-radius:50%;transform:translate(-50%,-50%);animation:spin 18s linear infinite}
+    .hero-orbit:after{content:"";position:absolute;left:50%;top:50%;width:96px;height:96px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,255,255,.11),rgba(46,92,151,.16),rgba(169,43,66,.10),transparent 70%);filter:blur(2px)}
+    .orbit-core{position:absolute;left:50%;top:50%;z-index:2;width:118px;height:118px;border-radius:50%;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.16);display:grid;place-items:center;text-align:center;background:rgba(7,10,15,.76);box-shadow:inset 0 0 40px rgba(255,255,255,.035),0 18px 55px rgba(0,0,0,.35);color:#fff;font-size:13px;line-height:1.35;font-weight:420;letter-spacing:-.01em}
+    .orbit-tag{position:absolute;z-index:3;padding:9px 11px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(255,255,255,.055);backdrop-filter:blur(12px);color:#dfe8f6;font-size:12px;font-weight:420;box-shadow:0 12px 34px rgba(0,0,0,.22);transition:.24s ease}
+    .orbit-tag:hover,.orbit-tag.active-orbit{transform:translateY(-3px);border-color:rgba(169,43,66,.42);background:rgba(169,43,66,.12);color:#fff}
+    .orbit-tag.t1{left:22px;top:22px}.orbit-tag.t2{right:24px;top:38px}.orbit-tag.t3{left:36px;bottom:34px}.orbit-tag.t4{right:28px;bottom:24px}.orbit-tag.t5{left:50%;bottom:10px;transform:translateX(-50%)}
+    .orbit-tag.t5:hover,.orbit-tag.t5.active-orbit{transform:translateX(-50%) translateY(-3px)}
+    .hero-microcopy{margin:16px auto 0;max-width:920px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:left}
+    .micro-card{padding:15px 16px;border:1px solid rgba(255,255,255,.09);border-radius:18px;background:rgba(255,255,255,.028);transition:.24s ease;color:#9facbd;font-size:13.5px;line-height:1.45;font-weight:300}
+    .micro-card:hover{transform:translateY(-3px);border-color:rgba(46,92,151,.34);background:rgba(46,92,151,.08);color:#d8e2ef}
+    .micro-card b{display:block;margin-bottom:5px;color:#fff;font-size:13px;font-weight:520}
+    @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+
+    .stats-band{position:relative;margin-top:-10px;margin-bottom:92px;z-index:4}
+    .stats-shell{background:linear-gradient(180deg,rgba(10,14,20,.98),rgba(4,6,10,.99));border:1px solid rgba(218,226,239,.16);border-radius:28px;box-shadow:0 28px 90px rgba(0,0,0,.42);overflow:hidden}
+    .stats-shell:before{content:"";display:block;height:1px;background:linear-gradient(90deg,transparent,rgba(55,98,153,.72),rgba(198,72,86,.55),transparent)}
+    .stats-intro{padding:30px 34px 26px;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,430px);align-items:end;gap:28px;border-bottom:1px solid rgba(218,226,239,.09);background:linear-gradient(90deg,rgba(45,95,159,.10),rgba(142,38,56,.05),transparent)}
+    .stats-eyebrow{margin-bottom:8px;color:#dfe7f4;font-size:11px;text-transform:uppercase;letter-spacing:.18em;font-weight:600}
+    .stats-title{margin:0;color:#fff;font-family:"Manrope","Inter",sans-serif;font-size:clamp(22px,2.2vw,34px);line-height:1.12;font-weight:400;letter-spacing:-.04em}
+    .stats-note{max-width:430px;color:#9facbd;font-size:14.5px;line-height:1.55;font-weight:300;text-align:left;justify-self:end}
+    
+    .stats-grid{display:grid;grid-template-columns:repeat(5,1fr)}
+    .stat{min-height:190px;padding:32px 20px 28px;border-right:1px solid rgba(218,226,239,.09);display:flex;flex-direction:column;justify-content:space-between;gap:16px;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.025),transparent);transition:transform .32s cubic-bezier(.2,.8,.2,1),background .32s ease,box-shadow .32s ease,border-color .32s ease}
+    .stat:last-child{border-right:none}
+    .stat:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.11),transparent 34%),linear-gradient(115deg,transparent 0%,rgba(45,95,159,.14) 38%,rgba(184,58,75,.11) 62%,transparent 100%);opacity:0;transform:translateY(10px);transition:opacity .32s ease,transform .32s ease;pointer-events:none}
+    .stat:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--blue2),var(--red),rgba(255,255,255,.36),transparent);transform:scaleX(0);transform-origin:left;transition:transform 1.15s cubic-bezier(.2,.8,.2,1),height .32s ease,filter .32s ease}
+    .stat.visible:after{transform:scaleX(1)}
+    .stat:hover{transform:translateY(-6px);background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.016));box-shadow:0 24px 70px rgba(0,0,0,.26),inset 0 0 0 1px rgba(255,255,255,.045);border-color:rgba(255,255,255,.16)}
+    .stat:hover:before{opacity:1;transform:translateY(0)}
+    .stat:hover:after{height:4px;filter:drop-shadow(0 0 14px rgba(184,58,75,.35))}
+    
+    .stat-number{font-family:"Manrope","Inter",sans-serif;font-size:clamp(38px,4.2vw,56px);line-height:.9;font-weight:380;letter-spacing:-.06em;color:#fff;font-variant-numeric:tabular-nums;white-space:nowrap;display:flex;align-items:baseline;gap:4px;position:relative;z-index:1;transition:transform .32s ease,text-shadow .32s ease}
+    .suffix{font-size:.36em;color:#b83a4b;margin-left:2px;letter-spacing:-.03em;font-weight:400;white-space:nowrap;transition:color .32s ease,text-shadow .32s ease}
+    .stat-label{max-width:210px;color:#aab5c5;font-size:13.5px;line-height:1.45;font-weight:300;position:relative;z-index:1;transition:color .32s ease,transform .32s ease}
+    .stat:hover .stat-number{transform:translateY(-2px);text-shadow:0 0 28px rgba(255,255,255,.16),0 0 42px rgba(45,95,159,.20)}
+    .stat:hover .suffix{color:#e56a7a;text-shadow:0 0 22px rgba(184,58,75,.34)}
+    .stat:hover .stat-label{color:#d7e0ed;transform:translateY(2px)}
+
+    section{padding:92px 0}
+    .section-head{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(280px,.92fr);gap:72px;align-items:end;margin-bottom:34px}
+    .kicker{margin-bottom:14px;color:#c75765;font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:600}
+    h2{margin:0;font-family:"Manrope","Inter",sans-serif;font-size:clamp(30px,3.45vw,46px);line-height:1.1;font-weight:400;letter-spacing:-.04em;color:#fff}
+    .section-copy{margin:0;color:#aab5c4;font-size:16.8px;line-height:1.72;font-weight:300;letter-spacing:-.012em}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{min-height:280px;padding:28px;background:rgba(255,255,255,.028);border:1px solid var(--line);border-radius:var(--radius);transition:transform .28s ease,border-color .28s ease,background .28s ease;position:relative;overflow:hidden}
+    .card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 24% 0%,rgba(27,62,104,.20),transparent 42%);opacity:0;transition:.28s ease}
+    .card:hover{transform:translateY(-4px);border-color:rgba(198,72,86,.24);background:rgba(255,255,255,.04)}
+    .card:hover:before{opacity:1}
+    .card>*{position:relative;z-index:1}
+    .tag{display:inline-flex;margin-bottom:34px;color:#c75765;font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:600}
+    .card h3,.resume-card h3,.step h3,.case-body h3{margin:0 0 14px;font-family:"Manrope","Inter",sans-serif;font-size:21px;line-height:1.2;font-weight:450;letter-spacing:-.035em;color:#fff}
+    .card p,.case-body p,.step p,.resume-card li{color:#a5b0bf;font-size:15.5px;line-height:1.68;font-weight:300;letter-spacing:-.005em}
+    .card p,.case-body p,.step p{margin:0}
+
+    .about-section{padding-top:74px}
+    .about-layout{display:grid;grid-template-columns:.92fr 1.08fr;gap:18px;align-items:stretch}
+    .about-lead-card,.about-detail-card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:28px;background:rgba(255,255,255,.028);box-shadow:0 26px 90px rgba(0,0,0,.22)}
+    .about-lead-card{padding:34px;display:flex;flex-direction:column;justify-content:space-between;min-height:470px;background:linear-gradient(135deg,rgba(20,41,70,.34),rgba(255,255,255,.025) 58%,rgba(157,38,53,.075))}
+    .about-name{font-family:"Manrope","Inter",sans-serif;font-size:clamp(28px,3.0vw,42px);line-height:1.08;letter-spacing:-.045em;font-weight:400;color:#fff;margin:0 0 20px}
+    .about-text{margin:0;color:#c1cada;font-size:16.5px;line-height:1.78;font-weight:300;letter-spacing:-.008em}
+    .about-signature{display:grid;gap:10px;margin-top:34px;padding-top:22px;border-top:1px solid rgba(218,226,239,.11)}
+    .about-signature span:first-child{color:#fff;font-size:13px;letter-spacing:.13em;text-transform:uppercase;font-weight:500}
+    .about-signature span:last-child{color:#8f9caf;font-size:14px;line-height:1.6;font-weight:300}
+    .about-detail-card{padding:0}
+    .about-row{display:grid;grid-template-columns:178px 1fr;gap:24px;padding:28px 30px;border-bottom:1px solid rgba(218,226,239,.085)}
+    .about-row:last-child{border-bottom:none}
+    .about-row-title{color:#c75765;font-size:12px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;padding-top:3px}
+    .about-row p{margin:0;color:#aeb8c7;font-size:15.5px;line-height:1.72;font-weight:300;letter-spacing:-.006em}
+    .about-points{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}
+    .about-point{border:1px solid rgba(218,226,239,.10);border-radius:16px;padding:13px 14px;background:rgba(255,255,255,.027);color:#cbd4e1;font-size:13.5px;line-height:1.45;font-weight:300}
+
+    /* Настройка обновленной сетки кейсов: увеличен вертикальный отступ */
+    .cases-grid{display:grid;grid-template-columns:repeat(2,1fr);row-gap:28px;column-gap:16px}
+    
+    /* Новая, более плавная и глубокая анимация наведения на карточки */
+    .case-card{background:rgba(255,255,255,.028);border:1px solid var(--line);border-radius:30px;overflow:hidden;transition:transform .4s cubic-bezier(0.16, 1, 0.3, 1),border-color .3s ease,background .3s ease,box-shadow .4s cubic-bezier(0.16, 1, 0.3, 1);box-shadow:0 18px 70px rgba(0,0,0,.18);cursor:pointer;will-change:transform;transform-style:preserve-3d}
+    .case-card:hover,.case-card.active{transform:translateY(-8px) scale(1.01);border-color:rgba(198,72,86,.4);background:rgba(255,255,255,.05);box-shadow:0 32px 95px rgba(0,0,0,.4),0 0 0 1px rgba(198,72,86,.15)}
+    
+    .video-box{height:0;padding-top:56.25%;position:relative;overflow:hidden;background:linear-gradient(135deg,#06080c,#101929 54%,#0c1017)}
+    .video-box:before{content:"";position:absolute;inset:1px;border-radius:26px;background:linear-gradient(135deg,rgba(255,255,255,.055),transparent 35%,rgba(157,38,53,.14));opacity:.95}
+    .video-box:after{content:"Видео-обзор системы";position:absolute;left:22px;top:20px;color:#d9e0ec;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase}
+    .video-box.has-video:before,.video-box.has-video:after{display:none}
+    .video-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:26px;background:#05070a}
+    .video-box.has-video{background:#05070a;border:1px solid rgba(255,255,255,.1)}
+    .play{position:absolute;left:50%;top:50%;width:68px;height:68px;border-radius:50%;transform:translate(-50%,-50%);background:rgba(255,255,255,.92);display:grid;place-items:center;box-shadow:0 18px 70px rgba(0,0,0,.34);transition:.25s ease}
+    .case-card:hover .play{transform:translate(-50%,-50%) scale(1.05)}
+    .play span{width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:15px solid #070a0f;margin-left:4px}
+    .video-status{position:absolute;right:18px;bottom:18px;padding:8px 10px;border-radius:999px;background:rgba(5,8,12,.72);border:1px solid rgba(255,255,255,.12);color:#abb7c8;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+    .case-body{padding:26px 26px 28px}
+    .case-title{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+    .case-number{color:#657184;font-size:13px;letter-spacing:.12em;margin-top:4px}
+    .case-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+    .pill{display:inline-flex;padding:7px 10px;border:1px solid rgba(218,226,239,.10);border-radius:999px;color:#a8b4c4;font-size:12px;background:rgba(255,255,255,.025)}
+
+    .timeline{display:grid;gap:12px}
+    .step{display:grid;grid-template-columns:170px 1fr;gap:34px;padding:26px 28px;background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:24px;transition:.25s ease}
+    .step:hover{transform:translateX(4px);border-color:rgba(54,98,153,.30);background:rgba(255,255,255,.038)}
+    .step-num{color:#c75765;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding-top:5px}
+
+    .experience{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .resume-card{padding:30px;background:rgba(255,255,255,.026);border:1px solid var(--line);border-radius:28px}
+    .resume-card ul{margin:18px 0 0;padding-left:18px;display:grid;gap:10px}
+    .resume-card li::marker{color:#c64856}
+
+    .footer{margin-top:92px;background:#020307;border-top:1px solid rgba(255,255,255,.10);position:relative;z-index:1;overflow:hidden}
+    .footer:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 0%,rgba(27,62,104,.38),transparent 35%),radial-gradient(circle at 88% 22%,rgba(157,38,53,.22),transparent 32%);pointer-events:none}
+    .footer:after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(54,98,153,.75),rgba(198,72,86,.55),transparent)}
+    .footer-inner{position:relative;z-index:1;padding:72px 0 34px}
+    .footer-main{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:70px;align-items:start}
+    .footer h2{font-size:clamp(30px,3.8vw,52px);max-width:760px;margin-bottom:20px}
+    .footer-lead{max-width:760px;color:#aeb9c8;font-size:16.8px;line-height:1.75;font-weight:300;margin:0 0 30px}
+    .footer-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .footer-panel{border:1px solid rgba(255,255,255,.12);border-radius:28px;background:rgba(255,255,255,.035);padding:26px}
+    .footer-panel-title{color:#fff;font-family:"Manrope","Inter",sans-serif;font-size:22px;line-height:1.25;letter-spacing:-.03em;margin-bottom:20px;font-weight:400}
+    .contact-list{display:grid;gap:10px;margin-bottom:24px}
+    .contact-item{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.085);color:#cbd5e4;font-size:14.5px}
+    .contact-item span{color:#6f7d91;font-size:12px;text-transform:uppercase;letter-spacing:.11em;font-weight:500}
+    .footer-nav{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:22px}
+    .footer-nav a{padding:11px 12px;border:1px solid rgba(255,255,255,.10);border-radius:14px;color:#9eabbc;font-size:13.5px;transition:.22s ease;background:rgba(255,255,255,.02)}
+    .footer-nav a:hover{color:#fff;border-color:rgba(198,72,86,.32);background:rgba(157,38,53,.09)}
+    .footer-bottom{position:relative;z-index:1;margin-top:60px;padding-top:22px;border-top:1px solid rgba(255,255,255,.09);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#68768a;font-size:13px;line-height:1.55}
+
+    .reveal{opacity:0;transform:translateY(12px);transition:opacity .85s ease,transform .85s cubic-bezier(.22,1,.36,1)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .delay-1{transition-delay:.08s}.delay-2{transition-delay:.16s}
+    .cursor-light{position:fixed;left:0;top:0;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(27,62,104,.16),rgba(157,38,53,.07),transparent 64%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);opacity:.55;filter:blur(4px)}
+
+    @media (max-width: 920px){
+      .hero-system{grid-template-columns:1fr;max-width:720px}.hero-microcopy{grid-template-columns:1fr}.hero-panel,.hero-orbit{min-height:auto}.hero-orbit{height:260px}
+    }
+
+
+    @media (max-width:980px){
+      .nav-links{display:none}.hero{min-height:auto;padding:84px 0 48px}.stats-band{margin-top:0}.stats-intro{grid-template-columns:1fr}.stats-note{justify-self:start}
+      
+      .stats-grid{grid-template-columns:repeat(2,1fr)}
+      .stat:nth-child(2n){border-right:none}
+      .stat:nth-child(-n+4){border-bottom:1px solid rgba(218,226,239,.09)}
+      .stat:last-child{grid-column:1 / -1; border-right:none;}
+
+      .section-head,.about-layout,.footer-main{grid-template-columns:1fr;gap:26px}.grid-3{grid-template-columns:1fr 1fr}.experience{grid-template-columns:1fr}.about-lead-card{min-height:auto}.about-row{grid-template-columns:1fr;gap:10px}.about-points{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){
+      .container{width:min(100% - 24px,var(--max))}.nav-inner{height:66px}.hero{padding:66px 0 32px}.eyebrow{font-size:10px;letter-spacing:.08em}.hero-actions{align-items:stretch;flex-direction:column}.btn{width:100%}.hero-note{font-size:11px;line-height:1.6}.stats-band{margin-bottom:58px}
+      
+      .stats-grid{grid-template-columns:1fr}
+      .stat:nth-child(n){border-right:none!important;border-bottom:1px solid rgba(218,226,239,.09);padding:28px 24px;min-height:auto}
+      .stat:last-child{border-bottom:none;grid-column:auto;}
+      
+      .grid-3,.cases-grid{grid-template-columns:1fr}
+      .section-head{margin-bottom:24px}section{padding:58px 0}.card{min-height:auto}.step{grid-template-columns:1fr;gap:8px}.footer{margin-top:56px}.footer-inner{padding:54px 0 28px}.footer-main{gap:34px}.footer-nav{grid-template-columns:1fr}.contact-item{display:grid}.footer-bottom{align-items:flex-start;flex-direction:column}
+    }
+  
+    .title-accent:before,.title-accent:after{display:none!important;}
+    .hero-title:hover .title-accent:after{display:none!important;}
+    .hero-proof{display:none!important;}
+    .about-section{padding-top:84px;padding-bottom:42px;}
+    .about-section .section-head{align-items:end;}
+    .about-layout{grid-template-columns:minmax(280px,.72fr) minmax(0,1.28fr);gap:18px;align-items:stretch;}
+    .about-lead-card,.about-detail-card{background:linear-gradient(180deg,rgba(255,255,255,.046),rgba(255,255,255,.018));border-color:rgba(218,226,239,.12);}
+    .about-text{font-size:16.5px;line-height:1.78;color:#c2ccd9;}
+    .about-signature{line-height:1.6;}
+    .about-row{grid-template-columns:138px 1fr;gap:22px;padding:20px 0;border-bottom:1px solid rgba(218,226,239,.09);}
+    .about-row:last-child{border-bottom:0;}
+    .about-row-title{font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:#8da2bd;}
+    .about-row p{font-size:15.5px;line-height:1.76;color:#b6c1cf;}
+    .about-points{margin-top:16px;gap:10px;}
+    .about-point{padding:13px 14px;border-radius:16px;background:rgba(12,18,28,.66);border:1px solid rgba(218,226,239,.09);color:#d8e0eb;line-height:1.5;}
+    @media(max-width:960px){.about-layout{grid-template-columns:1fr}.about-row{grid-template-columns:1fr;gap:8px}}
+
+    .hero-title{display:grid;gap:4px;justify-items:center;overflow:visible;font-size:clamp(40px,4.85vw,68px);max-width:920px;}
+    .hero-title .title-line{display:block;will-change:transform,opacity;white-space:nowrap;}
+    .hero-title .title-line:first-child{animation:titleRise .82s cubic-bezier(.2,.8,.2,1) both;}
+    .hero-title .title-line:nth-child(2){animation:titleRise .82s cubic-bezier(.2,.8,.2,1) .10s both;}
+    .title-accent{background:linear-gradient(90deg,#fff 0%,#dbe8ff 42%,#ffffff 72%,#f1c7cf 100%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:titleGradient 5.5s ease-in-out infinite;text-shadow:none;}
+    .cases-title{max-width:720px;}
+    .cases-title span{display:block;}
+    .cases-title span:last-child{position:relative;color:#fff;}
+    .cases-title span:last-child:after{content:"";position:absolute;left:0;right:.08em;bottom:.04em;height:.16em;border-radius:999px;background:linear-gradient(90deg,rgba(45,95,159,.62),rgba(198,72,86,.56),transparent);z-index:-1;transform-origin:left;animation:titleUnderlineSoft 4.2s ease-in-out infinite;}
+    
+    .case-card:before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,.075) 26%,transparent 46%);transform:translateX(-120%);transition:transform .72s ease;}
+    .case-card:hover:before,.case-card.active:before{transform:translateX(120%);}
+    .video-box{border-radius:26px;}
+    .video-box:not(.has-video){background:
+      radial-gradient(circle at 72% 18%,rgba(198,72,86,.22),transparent 32%),
+      radial-gradient(circle at 22% 80%,rgba(45,95,159,.26),transparent 34%),
+      linear-gradient(135deg,#06080c,#101929 54%,#0c1017);}
+    .video-box:not(.has-video):before{animation:videoGlow 5.5s ease-in-out infinite;}
+    .play{animation:playPulse 2.25s ease-in-out infinite;}
+    .case-card:hover .pill{border-color:rgba(255,255,255,.18);color:#dce6f5;background:rgba(255,255,255,.04);}
+    .pill{transition:border-color .24s ease,color .24s ease,background .24s ease,transform .24s ease;}
+    .case-card:hover .pill:nth-child(odd){transform:translateY(-1px);}
+    .case-card:hover .pill:nth-child(even){transform:translateY(1px);}
+    .about-experience{margin-top:18px;}
+
+    @keyframes titleRise{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+    @keyframes titleGradient{0%,100%{background-position:0% center}50%{background-position:100% center}}
+    @keyframes titleUnderlineSoft{0%,100%{transform:scaleX(.42);opacity:.42}50%{transform:scaleX(1);opacity:.86}}
+    @keyframes videoGlow{0%,100%{opacity:.78;filter:saturate(1)}50%{opacity:1;filter:saturate(1.28)}}
+    @keyframes playPulse{0%,100%{box-shadow:0 18px 70px rgba(0,0,0,.34),0 0 0 0 rgba(255,255,255,.14)}50%{box-shadow:0 20px 84px rgba(0,0,0,.42),0 0 0 12px rgba(255,255,255,.03)}}
+
+    @media (prefers-reduced-motion: reduce){
+      .hero-title .title-line,.title-accent,.cases-title span:last-child:after,.video-box:not(.has-video):before,.play{animation:none!important;}
+      .case-card,.case-card:before,.pill{transition:none!important;}
+    }
+
+    @media (max-width:640px){
+      .hero-title{gap:2px;font-size:clamp(31px,8.7vw,42px);}
+      .cases-title{max-width:100%;}
+    }
+
+    .process-highlight{position:relative;margin:34px 0 18px;padding:98px 0;background:#020307;border-top:1px solid rgba(255,255,255,.10);border-bottom:1px solid rgba(255,255,255,.10);overflow:hidden;z-index:1;}
+    .process-highlight:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 18% 0%,rgba(27,62,104,.42),transparent 36%),radial-gradient(circle at 88% 26%,rgba(157,38,53,.24),transparent 32%);pointer-events:none;}
+    .process-highlight:after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(54,98,153,.75),rgba(198,72,86,.55),transparent);}
+    .process-highlight .container{position:relative;z-index:1;}
+    .process-highlight .section-head{padding:0 0 6px;margin-bottom:30px;}
+    .process-highlight .timeline{position:relative;}
+    .process-highlight .step{background:rgba(255,255,255,.035);border-color:rgba(218,226,239,.12);box-shadow:0 18px 54px rgba(0,0,0,.18);}
+    .process-highlight .step:hover{border-color:rgba(198,72,86,.30);background:rgba(255,255,255,.052);}
+    @media(max-width:640px){.process-highlight{margin:18px 0 8px;padding:64px 0;}}
+
+    .about-clean-layout{display:grid;grid-template-columns:minmax(300px,.82fr) minmax(0,1.18fr);gap:16px;align-items:stretch;margin-top:4px;}
+    .about-profile-card,.about-info-card{position:relative;overflow:hidden;border:1px solid rgba(218,226,239,.12);background:linear-gradient(180deg,rgba(255,255,255,.044),rgba(255,255,255,.018));box-shadow:0 24px 78px rgba(0,0,0,.22);}
+    .about-profile-card{border-radius:30px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;min-height:100%;}
+    .about-profile-card:before{content:"";position:absolute;inset:-1px;background:radial-gradient(circle at 18% 0%,rgba(45,95,159,.22),transparent 38%),radial-gradient(circle at 100% 100%,rgba(157,38,53,.14),transparent 34%);pointer-events:none;}
+    .about-profile-card>*{position:relative;z-index:1;}
+    .about-mini-label{display:inline-flex;margin-bottom:18px;color:#c75765;font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:600;}
+    .about-profile-card .about-name{margin-bottom:18px;font-size:clamp(30px,3.2vw,42px);}
+    .about-profile-card .about-text{max-width:620px;color:#c7d0dc;font-size:16px;line-height:1.78;}
+    .about-photo-card{position:relative;margin:0 0 24px;border-radius:24px;overflow:hidden;border:1px solid rgba(218,226,239,.13);background:linear-gradient(135deg,rgba(45,95,159,.16),rgba(157,38,53,.08));box-shadow:0 22px 64px rgba(0,0,0,.28);isolation:isolate;aspect-ratio:4/5;max-height:520px;}
+    .about-photo-card:before{content:none;}
+    .about-photo-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 56%,rgba(4,6,10,.50));pointer-events:none;}
+    .about-photo-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:saturate(.96) contrast(1.04);transform:scale(1.01);transition:transform .55s ease,filter .55s ease;}
+    .about-profile-card:hover .about-photo-card img{transform:scale(1.045);filter:saturate(1.04) contrast(1.06);}
+    .about-focus-box{margin-top:28px;padding:18px 18px 17px;border:1px solid rgba(218,226,239,.11);border-radius:20px;background:rgba(7,11,17,.52);}
+    .about-focus-box span{display:block;margin-bottom:8px;color:#fff;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:520;}
+    .about-focus-box p{margin:0;color:#9facbd;font-size:14px;line-height:1.62;font-weight:300;}
+    .about-info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
+    .about-info-card{min-height:210px;border-radius:24px;padding:24px;transition:transform .25s ease,border-color .25s ease,background .25s ease;}
+    .about-info-card:hover{transform:translateY(-4px);border-color:rgba(198,72,86,.26);background:rgba(255,255,255,.042);}
+    .about-info-card span{display:inline-flex;margin-bottom:20px;color:#c75765;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;}
+    .about-info-card h3{margin:0 0 12px;font-family:"Manrope","Inter",sans-serif;font-size:20px;line-height:1.2;font-weight:450;letter-spacing:-.035em;color:#fff;}
+    .about-info-card p{margin:0;color:#aeb9c8;font-size:14.8px;line-height:1.68;font-weight:300;letter-spacing:-.006em;}
+    .about-skill-strip{margin-top:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+    .about-skill-strip div{padding:14px 15px;border:1px solid rgba(218,226,239,.10);border-radius:18px;background:rgba(255,255,255,.026);color:#d8e0eb;font-size:13.5px;line-height:1.42;font-weight:350;text-align:center;}
+    @media(max-width:980px){.about-clean-layout{grid-template-columns:1fr}.about-info-grid{grid-template-columns:1fr 1fr}.about-skill-strip{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.about-profile-card{padding:26px}.about-photo-card{aspect-ratio:3/4;max-height:440px}.about-info-grid,.about-skill-strip{grid-template-columns:1fr}.about-info-card{min-height:auto}}
+
+    @media (max-width: 640px){
+      .nav{position:sticky;}
+      .nav-inner{height:62px;}
+      .brand{font-size:14px;min-width:0;}
+      .brand span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+      .hero{
+        min-height:auto;
+        align-items:flex-start;
+        padding:44px 0 34px;
+      }
+      .hero:before{
+        top:34%;
+        width:118vw;
+        height:460px;
+        opacity:.56;
+        filter:blur(16px);
+      }
+      .hero-center{
+        max-width:100%;
+        width:100%;
+        padding:0;
+      }
+      .eyebrow{
+        display:flex;
+        width:100%;
+        max-width:100%;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        gap:8px;
+        margin:0 auto 18px;
+        padding:8px 11px;
+        border-radius:18px;
+        font-size:9.8px;
+        line-height:1.38;
+        letter-spacing:.075em;
+      }
+      .eyebrow i{
+        flex:0 0 6px;
+      }
+      h1.hero-title,
+      .hero-title{
+        width:100%;
+        max-width:100%;
+        margin:0 auto 17px;
+        gap:3px;
+        font-size:clamp(25px,7.15vw,30px);
+        line-height:1.08;
+        letter-spacing:-.048em;
+        text-align:center;
+      }
+      .hero-title .title-line{
+        display:block;
+        white-space:nowrap;
+        max-width:100%;
+      }
+      .hero-title .title-accent{
+        display:inline-block;
+        white-space:nowrap;
+      }
+      .lead{
+        max-width:100%;
+        font-size:15px;
+        line-height:1.58;
+        letter-spacing:-.012em;
+        padding:0 2px;
+      }
+      .hero-actions{
+        margin-top:24px;
+        gap:10px;
+      }
+      .btn{
+        min-height:46px;
+        padding:0 18px;
+        font-size:13.5px;
+      }
+      .hero-note{
+        margin-top:22px;
+        font-size:10.5px;
+        line-height:1.55;
+        letter-spacing:.055em;
+        padding:0 4px;
+      }
+      .stats-band{
+        margin-top:0;
+      }
+    }
+
+    @media (max-width: 390px){
+      h1.hero-title,
+      .hero-title{
+        font-size:clamp(23px,6.85vw,27px);
+        letter-spacing:-.042em;
+      }
+      .lead{
+        font-size:14.4px;
+      }
+      .eyebrow{
+        font-size:9.2px;
+        letter-spacing:.055em;
+      }
+    }
+
+    html{
+      scrollbar-width:thin;
+      scrollbar-color:rgba(184,58,75,.82) rgba(5,6,8,.96);
+    }
+    ::-webkit-scrollbar{
+      width:10px;
+      height:10px;
+    }
+    ::-webkit-scrollbar-track{
+      background:linear-gradient(180deg,#050608 0%,#080b10 52%,#050608 100%);
+      border-left:1px solid rgba(218,226,239,.07);
+    }
+    ::-webkit-scrollbar-thumb{
+      background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(45,95,159,.72),rgba(184,58,75,.86));
+      border:2px solid #050608;
+      border-radius:999px;
+      box-shadow:0 0 18px rgba(184,58,75,.22), inset 0 0 0 1px rgba(255,255,255,.12);
+    }
+    ::-webkit-scrollbar-thumb:hover{
+      background:linear-gradient(180deg,rgba(255,255,255,.48),rgba(55,111,184,.86),rgba(198,72,86,.96));
+      box-shadow:0 0 24px rgba(198,72,86,.34), inset 0 0 0 1px rgba(255,255,255,.18);
+    }
+    ::-webkit-scrollbar-corner{background:#050608;}
+    @media(max-width:640px){::-webkit-scrollbar{width:7px;height:7px}}
+
+
+    .hero-center{isolation:isolate;}
+
+    .hero-text-abstract{
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:min(1280px,116vw);
+      height:500px;
+      transform:translate(-50%,-50%);
+      z-index:-1;
+      pointer-events:none;
+      overflow:hidden;
+      border-radius:46% 54% 48% 52%;
+      filter:blur(18px);
+      opacity:.74;
+      background:
+        radial-gradient(ellipse at 28% 48%, rgba(45,95,159,.42), transparent 46%),
+        radial-gradient(ellipse at 62% 50%, rgba(184,58,75,.26), transparent 44%),
+        radial-gradient(ellipse at 50% 52%, rgba(255,255,255,.10), transparent 58%),
+        linear-gradient(100deg, transparent 4%, rgba(255,255,255,.045) 46%, transparent 88%);
+      mix-blend-mode:screen;
+    }
+
+    .hero-text-abstract:before{
+      content:"";
+      position:absolute;
+      left:2%;
+      right:2%;
+      top:45%;
+      height:96px;
+      border-radius:999px;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.14),
+        rgba(45,95,159,.36),
+        rgba(184,58,75,.24),
+        rgba(255,255,255,.08),
+        transparent
+      );
+      filter:blur(24px);
+      transform:rotate(-2deg);
+      opacity:.82;
+    }
+
+    .hero-text-abstract:after{
+      content:"";
+      position:absolute;
+      left:9%;
+      right:9%;
+      top:56%;
+      height:1px;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.28),
+        rgba(45,95,159,.42),
+        rgba(184,58,75,.30),
+        transparent
+      );
+      box-shadow:0 0 46px rgba(80,125,190,.28);
+      opacity:.72;
+    }
+
+    @media(max-width:640px){
+      .hero-text-abstract{
+        width:134vw;
+        height:360px;
+        filter:blur(17px);
+        opacity:.58;
+      }
+    }
+
+
+    .hero-avatar{
+      width:124px;
+      height:124px;
+      margin:0 auto 22px;
+      padding:3px;
+      border-radius:50%;
+      background:linear-gradient(135deg,rgba(255,255,255,.72),rgba(45,95,159,.82),rgba(198,72,86,.88),rgba(255,255,255,.28));
+      box-shadow:0 22px 74px rgba(0,0,0,.36),0 0 46px rgba(45,95,159,.18),0 0 34px rgba(198,72,86,.14);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-avatar:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius:inherit;
+      background:radial-gradient(circle at 28% 18%,rgba(255,255,255,.38),transparent 34%);
+      pointer-events:none;
+      z-index:2;
+    }
+    .hero-avatar img{
+      width:100%;
+      height:100%;
+      display:block;
+      border-radius:50%;
+      object-fit:cover;
+      object-position:center;
+      border:1px solid rgba(5,6,8,.82);
+      background:#06080c;
+    }
+    @media(max-width:640px){.hero-avatar{width:96px;height:96px;margin-bottom:18px}}
+
+    .case-card{transition:none!important;will-change:auto!important;transform-style:flat!important;}
+    .case-card:hover,.case-card.active{transform:none!important;}
+    .case-card:before{display:none!important;transition:none!important;animation:none!important;}
+    .video-box:not(.has-video):before,.play{animation:none!important;}
+    .case-card:hover .play{transform:translate(-50%,-50%)!important;}
+    .pill{transition:none!important;}
+    .case-card:hover .pill:nth-child(odd),.case-card:hover .pill:nth-child(even){transform:none!important;}
+
+
+    #cases{padding-bottom:24px;}
+    .lumarium-case-section{padding:0 0 92px;}
+    .lumarium-case{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,360px);gap:18px;align-items:stretch;border:1px solid rgba(218,226,239,.15);border-radius:30px;background:linear-gradient(135deg,rgba(255,255,255,.052),rgba(45,95,159,.105),rgba(157,38,53,.070));box-shadow:0 24px 78px rgba(0,0,0,.26),inset 0 0 0 1px rgba(255,255,255,.025);overflow:hidden;}
+    .lumarium-copy{padding:34px;display:flex;flex-direction:column;justify-content:center;min-width:0;}
+    .lumarium-copy h2{margin-bottom:16px;}
+    .lumarium-copy p{margin:0;color:#aeb9c8;font-size:16px;line-height:1.72;font-weight:300;letter-spacing:-.006em;max-width:720px;}
+    .lumarium-video{position:relative;aspect-ratio:9/16;min-height:520px;background:#05070a;border-left:1px solid rgba(255,255,255,.10);overflow:hidden;}
+    .lumarium-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#05070a;}
+    html,body{max-width:100%;overflow-x:hidden;}
+    img,iframe,video{max-width:100%;}
+    main,section,.container,.case-card,.lumarium-case{max-width:100%;}
+    .case-title,.case-body,.lumarium-copy{min-width:0;}
+    .case-body h3,.lumarium-copy h2,.pill{overflow-wrap:anywhere;}
+    @media(max-width:980px){
+      .lumarium-case{grid-template-columns:1fr;}
+      .lumarium-video{width:min(100%,360px);min-height:auto;margin:0 auto 28px;border-left:0;border-top:1px solid rgba(255,255,255,.10);border-radius:24px;}
+    }
+    @media(max-width:640px){
+      #cases{padding-bottom:16px;}
+      .lumarium-case-section{padding:0 0 58px;}
+      .lumarium-copy{padding:26px;}
+      .lumarium-copy p{font-size:15px;line-height:1.62;}
+      .lumarium-video{width:min(100%,320px);}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="cursor-light" aria-hidden="true"></div>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top"><span>Дмитрий Алексеев</span></a>
+      <div class="nav-links">
+        <a href="#services">Компетенции</a>
+        <a href="#cases">Кейсы</a>
+        <a href="#about">Обо мне и опыт</a>
+        <a href="#process">Подход</a>
+        <a class="nav-cta" href="#contact">Связаться</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-center reveal visible">
+          <div class="hero-text-abstract" aria-hidden="true"></div>
+          <div class="hero-avatar"><img src="https://i.postimg.cc/2ysyzSx5/cc153e90-134f-4e24-b59a-d8fa5d8271ad.jpg" alt="Дмитрий Алексеев"></div>
+          <div class="eyebrow"><i></i>ИИ-интеграция для B2B, продаж и производственных процессов</div>
+          <h1 class="hero-title"><span class="title-line">Внедряю ИИ, который</span><span class="title-line"><span class="title-accent">ускоряет продажи и процессы</span></span></h1>
+          <p class="lead">Помогаю компаниям внедрять ИИ не как эксперимент, а как рабочий инструмент: для обработки заявок, CRM, отчётности, расчётов, чертежей, клиентских коммуникаций и контроля процессов.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://t.me/DmitryNourse" target="_blank" rel="noreferrer">Обсудить задачу</a>
+            <a class="btn btn-ghost" href="#cases">Смотреть кейсы</a>
+          </div>
+          <div class="hero-note">Санкт-Петербург · B2B · ИИ-автоматизация · CRM · продажи · продукт</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="stats-band">
+      <div class="container">
+        <div class="stats-shell reveal visible">
+          <div class="stats-intro">
+            <div>
+              <div class="stats-eyebrow">Результаты моей работы</div>
+              <h2 class="stats-title">Результаты из проектов, где я отвечал за рост, продукт и автоматизацию</h2>
+            </div>
+            <div class="stats-note">Показатели из реальных проектов: продукт, маркетинг, CRM, автоматизация, продажи и внедрение ИИ в рабочие процессы.</div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat visible"><div class="stat-number"><span class="count" data-target="225000">225 000</span><span class="suffix">+</span></div><div class="stat-label">уникальных посетителей в месяц (SEO-выдача)</div></div>
+            <div class="stat visible"><div class="stat-number"><span class="count" data-target="17.7">17.7</span><span class="suffix">%</span></div><div class="stat-label">конверсия из лида в продажу (увеличилась вдвое после внедрения AI-агентов)</div></div>
+            <div class="stat visible"><div class="stat-number"><span class="count" data-target="800">800</span><span class="suffix">+</span></div><div class="stat-label">B2B-заявок в месяц после настройки лидогенерации</div></div>
+            <div class="stat visible"><div class="stat-number"><span class="count" data-target="400">400</span><span class="suffix">млн ₽</span></div><div class="stat-label">поток заявок в месяц без увеличения бюджета</div></div>
+            <div class="stat visible"><div class="stat-number"><span class="count" data-target="35">35</span></div><div class="stat-label">чертежей в день (вместо 4) выполняет инженер с помощью ИИ</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="cases">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="kicker">Кейсы</div><h2 class="cases-title"><span>Мои внедрённые ИИ-кейсы,</span><span>которые продают результат</span></h2></div>
+          <p class="section-copy">Здесь собраны кейсы, которые я лично проектировал, запускал и внедрял в реальные бизнес-сценарии: отчётность, сбор данных, коммерческие отделы, расчёты, 3D-направления, чертежи и продуктовые MVP.</p>
+        </div>
+        <div class="cases-grid">
+
+          <article class="case-card reveal active">
+            <div class="video-box has-video">
+              <iframe src="https://www.youtube.com/embed/sSLOXUIiY3g" title="Nika ИИ — обзор системы" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="case-body">
+              <div class="case-title"><h3>Nika ИИ</h3><span class="case-number">01</span></div>
+              <p>ИИ-ассистент для обработки запросов, поддержки пользователей, генерации ответов и помощи в бизнес-процессах. Система снижает нагрузку на команду и ускоряет коммуникацию.</p>
+              <div class="case-meta">
+                <span class="pill">ИИ-ассистент</span>
+                <span class="pill">Поддержка</span>
+                <span class="pill">Рабочие процессы</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-card reveal delay-1">
+            <div class="video-box has-video">
+              <iframe src="https://www.youtube.com/embed/pE4TyQ137_s" title="Lumetrya — обзор ИИ-системы для бизнеса" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="case-body">
+              <div class="case-title"><h3>Lumetrya</h3><span class="case-number">02</span></div>
+              <p>Lumetrya — B2B-система для автоматизации отчётности, аналитики и управленческого контроля. Ключевая инновация: system самостоятельно собирает данные из источников без сложной настройки интеграций, помогает структурировать информацию, снижать ручную нагрузку и быстрее получать понятные управленческие отчёты.</p>
+              <div class="case-meta">
+                <span class="pill">ИИ-отчёты</span>
+                <span class="pill">Сбор данных</span>
+                <span class="pill">Без сложных интеграций</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-card reveal">
+            <div class="video-box has-video">
+              <iframe src="https://www.youtube.com/embed/LQZqQ5iRNPo" title="Калькулятор для 3D — видео-обзор системы" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="case-body">
+              <div class="case-title"><h3>Калькулятор для 3D</h3><span class="case-number">03</span></div>
+              <p>Инструмент для расчётов, подбора параметров, оценки стоимости и производственных сценариев в 3D-направлении. Помогает быстрее переводить запрос клиента в понятный расчёт и показывать экономику заказа без долгой ручной подготовки.</p>
+              <div class="case-meta">
+                <span class="pill">3D</span>
+                <span class="pill">Калькулятор</span>
+                <span class="pill">Видео-обзор</span>
+                <span class="pill">Автоматизация расчётов</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-card reveal delay-1">
+            <div class="video-box has-video">
+              <iframe src="https://www.youtube.com/embed/qVSqRfI0JZ4" title="AI-система управления аддитивным производством — видео-обзор" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="case-body">
+              <div class="case-title"><h3>AI-система управления аддитивным производством</h3><span class="case-number">04</span></div>
+              <p>Система для управления аддитивным производством: календарь производства, склад материалов и контроль остатков, управление персоналом и графиком работы персонала. Код полностью сделан с помощью AI.</p>
+              <div class="case-meta">
+                <span class="pill">Аддитивное производство</span>
+                <span class="pill">Календарь производства</span>
+                <span class="pill">Склад материалов</span>
+                <span class="pill">Управление персоналом</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-card reveal">
+            <div class="video-box has-video">
+              <iframe src="https://www.youtube.com/embed/zbfO08dEZ6U" title="Система автоматического создания чертежей — видео" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="case-body">
+              <div class="case-title"><h3>Система автоматического создания чертежей</h3><span class="case-number">05</span></div>
+              <p>Решение для сокращения ручной подготовки технических материалов: от исходных данных до автоматически сформированного чертежа или комплекта документации.</p>
+              <div class="case-meta">
+                <span class="pill">Инженерные задачи</span>
+                <span class="pill">Чертежи</span>
+                <span class="pill">ИИ-автоматизация</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-card reveal delay-1">
+            <div class="video-box">
+              <div class="play"><span></span></div>
+              <div class="video-status">место под видео</div>
+            </div>
+            <div class="case-body">
+              <div class="case-title"><h3>Teleport3D</h3><span class="case-number">06</span></div>
+              <p>Стартап и платформа-прототип: облачное хранилище, ИИ-ассистент, калькулятор, база моделей и обучение. Проект дошёл до предпосевной стадии, получил аудиторию и первые коммерческие результаты.</p>
+              <div class="case-meta">
+                <span class="pill">прототип</span>
+                <span class="pill">ИИ-ассистент</span>
+                <span class="pill">3D-платформа</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="lumarium-case-section">
+      <div class="container">
+        <div class="lumarium-case reveal">
+          <div class="lumarium-copy">
+            <div class="kicker">AI-визуал и фото</div>
+            <h2>Lumarium.art</h2>
+            <p>Lumarium.art — сервис для создания и обработки пользовательских фото без промта: пользователь загружает референс, а система помогает получить нужный визуальный результат. Внутри — обработка товарных фото, создание групповых фото и генерация изображений по референсу для личных, коммерческих и контентных задач.</p>
+            <div class="case-meta">
+              <a class="pill" href="https://lumarium.art/" target="_blank" rel="noreferrer">lumarium.art</a>
+              <span class="pill">Без промта</span>
+              <span class="pill">Фото по референсу</span>
+              <span class="pill">Товарные фото</span>
+              <span class="pill">Групповые фото</span>
+            </div>
+          </div>
+          <div class="lumarium-video">
+            <iframe src="https://www.youtube.com/embed/LSovMIervPk" title="Lumarium.art — вертикальное видео" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="kicker">Компетенции</div><h2>ИИ, продукт, маркетинг и коммерческие процессы в одной системе</h2></div>
+          <p class="section-copy">Я работаю не только с инструментами, а с бизнес-логикой: где теряются заявки, какие действия менеджеры повторяют вручную, какие документы и расчёты можно автоматизировать, как встроить ИИ в CRM, сайт, отдел продаж и продукт.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card reveal"><div class="tag">01 · Аудит и стратегия</div><h3>ИИ-аудит бизнеса</h3><p>Разбираю процессы, отдел продаж, CRM, маркетинг, клиентские обращения и внутренние операции. Нахожу сценарии, где ИИ может быстро сократить ручную работу, ускорить обработку заявок и повысить прозрачность.</p></article>
+          <article class="card reveal delay-1"><div class="tag">02 · ИИ-агенты</div><h3>ИИ-агенты и боты</h3><p>Проектирую ИИ-агентов для коммерческих отделов: первичная квалификация лидов, ответы клиентам, подготовка данных для менеджера, контроль этапов сделки, напоминания и работа с базой знаний.</p></article>
+          <article class="card reveal delay-2"><div class="tag">03 · Цифровые продукты</div><h3>Прототипы и цифровые продукты</h3><p>Помогаю запускать прикладные сервисы: ИИ-ассистенты, калькуляторы, личные кабинеты, базы моделей, автоматизированные интерфейсы и инструменты для инженерных или производственных задач.</p></article>
+          <article class="card reveal"><div class="tag">04 · Продажи и CRM</div><h3>CRM и автоматизация продаж</h3><p>Настраиваю связку маркетинга, продаж и клиентского сервиса: AmoCRM, Bitrix24, воронки, автоворонки, отчётность, контроль задач, обрабопя заявки и аналитика по этапам.</p></article>
+          <article class="card reveal delay-1"><div class="tag">05 · Расчёты и чертежи</div><h3>Расчёты, 3D и чертежи</h3><p>Создаю решения для расчётов, 3D-направлений и инженерных процессов: калькуляторы, генерация документации, автоматическое создание чертежей, подготовка данных и сокращение ручной подготовки материалов.</p></article>
+          <article class="card reveal delay-2"><div class="tag">06 · Лидогенерация</div><h3>B2B-маркетинг и лидогенерация</h3><p>Запускаю цифровые каналы, поисковой оптимизации, контекст, сайты, публичных коммуникаций, почтовые рассылки и автоматизацию. Выстраиваю системную лидогенерацию и коммерческую воронку с фокусом на измеримый результат.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="process-highlight">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="kicker">Подход</div><h2>Внедрение ИИ начинается не с модели, а с бизнес-процесса</h2></div><p class="section-copy">Сначала — задача и экономика процесса. Затем сценарии, прототип, интеграции, обучение команды и регулярное улучшение. Так ИИ становится частью операционной системы, а не отдельным экспериментом.</p></div>
+        <div class="timeline">
+          <div class="step reveal"><div class="step-num">Шаг 01</div><div><h3>Диагностика</h3><p>Изучаю процессы, воронку, CRM, роли сотрудников, типовые обращения, документы, расчёты, точки потери времени и денег.</p></div></div>
+          <div class="step reveal"><div class="step-num">Шаг 02</div><div><h3>Карта автоматизации</h3><p>Определяю, какие сценарии стоит автоматизировать первыми: где быстрый эффект, низкий риск и понятная польза для команды.</p></div></div>
+          <div class="step reveal"><div class="step-num">Шаг 03</div><div><h3>Прототип и проверка</h3><p>Собираю рабочую логику, формирую требования для разработки, контролирую релизы и проверяю систему на реальных сценариях.</p></div></div>
+          <div class="step reveal"><div class="step-num">Шаг 04</div><div><h3>Интеграция</h3><p>Связываю решение с CRM, сайтом, формами, коммуникациями, аналитикой, базами знаний и внутренними процессами компании.</p></div></div>
+          <div class="step reveal"><div class="step-num">Шаг 05</div><div><h3>Масштабирование</h3><p>Собираю обратную связь, улучшаю сценарии, добавляю новые роли агентов, отчётность, контроль качества и расширение на другие отделы.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="kicker">Обо мне и опыт</div><h2>Понимаю бизнес-задачи, продуктовую логику, маркетинг и разработку</h2></div>
+          <p class="section-copy">Моя сильная сторона — соединять собственника, коммерческий отдел, маркетинг и разработку вокруг понятной задачи: что автоматизируем, зачем, как измеряем эффект и как доводим решение до использования командой.</p>
+        </div>
+        <div class="about-clean-layout">
+          <div class="about-profile-card reveal">
+            <div class="about-profile-top">
+              <div class="about-photo-card"><img src="https://i.postimg.cc/3xJ7fJBP/photo-5206280732996139068-w.jpg" alt="Дмитрий Алексеев" loading="lazy"></div>
+              <span class="about-mini-label">Профиль</span>
+              <h3 class="about-name">Дмитрий Алексеев</h3>
+              <p class="about-text">Маркетолог, владелец продукта и ИИ-интегратор с опытом в B2B, B2C, инженерных, производственных и цифровых направлениях. Запускал продукты и новые бизнес-направления с нуля, выстраивал системную лидогенерацию, развивал CRM, автоматизировал коммерческие процессы и управлял созданием прикладных ИИ-инструментов.</p>
+            </div>
+            <div class="about-focus-box"><span>Фокус</span><p>ИИ в бизнес-процессах, коммерческих отделах, продуктовых прототипах, 3D-направлениях, CRM, расчётах, документации и клиентских коммуникациях.</p></div>
+          </div>
+
+          <div class="about-info-grid reveal delay-1">
+            <div class="about-info-card"><span>01</span><h3>Бизнес и продукт</h3><p>Работаю на стыке маркетинга, продаж, продукта и технологий. Перевожу бизнес-задачу в понятное техническое задание, собираю команду, ставлю приоритеты и довожу прототип до пользователей и коммерческих результатов.</p></div>
+            <div class="about-info-card"><span>02</span><h3>Teleport3D</h3><p>Сооснователь, владелец продукта и руководитель по маркетингу. Участвовал в запуске стартапа, развитии платформы-прототипа, подготовке к инвестиционной стадии, сборе команды и запуске цифровых каналов.</p></div>
+            <div class="about-info-card"><span>03</span><h3>KZ Transit и B2B</h3><p>Руководил маркетингом и рекламой, запускал SEO, контекст, таргетинг, корпоративные сайты, системную лидогенерацию, CRM и ИИ-ассистентов для ускорения обработки заявок.</p></div>
+            <div class="about-info-card"><span>04</span><h3>Подход к внедрению</h3><p>Не предлагаю ИИ ради ИИ. Сначала разбираю процесс, экономику и точки потерь. Затем собираю сценарий, прототип, интеграции, аналитику и систему улучшений.</p></div>
+          </div>
+        </div>
+
+        <div class="about-skill-strip reveal">
+          <div>Запуск продуктов с нуля</div>
+          <div>ИИ-агенты и автоматизация продаж</div>
+          <div>CRM, воронки и B2B-лидогенерация</div>
+          <div>Прототипы, релизы и рост продукта</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contact" class="footer">
+    <div class="container footer-inner">
+      <div class="footer-main reveal">
+        <div>
+          <div class="kicker">Контакт</div>
+          <h2>Обсудим, как ИИ может дать бизнесу измеримый эффект</h2>
+          <p class="footer-lead">Можно начать с аудита процессов, разборки коммерческого отдела, идеи ИИ-агента, прототипа продукта или конкретной задачи: расчёты, чертежи, заявки, CRM, клиентские коммуникации, база знаний.</p>
+          <div class="footer-actions"><a class="btn btn-primary" href="https://t.me/DmitryNourse" target="_blank" rel="noreferrer">Написать в Телеграм</a><a class="btn btn-ghost" href="mailto:forisabelrich@gmail.com">Написать на почту</a></div>
+        </div>
+        <div class="footer-panel">
+          <div class="footer-panel-title">Внедрение ИИ для компаний, где важны продажи, скорость обработки заявок, отчётность и управляемые процессы.</div>
+          <div class="contact-list">
+            <a class="contact-item" href="https://t.me/DmitryNourse" target="_blank" rel="noreferrer"><span>Телеграм</span>@DmitryNourse</a>
+            <a class="contact-item" href="mailto:forisabelrich@gmail.com"><span>Почта</span>forisabelrich@gmail.com</a>
+            <a class="contact-item" href="tel:+79898074394"><span>Телефон</span>+7 989 807-43-94</a>
+            <div class="contact-item"><span>Город</span>Санкт-Петербург · удалённо / гибрид</div>
+          </div>
+          <div class="footer-nav"><a href="#services">Компетенции</a><a href="#cases">Кейсы</a><a href="#about">Обо мне и опыт</a><a href="#process">Подход</a><a href="#top">Наверх ↑</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>Дмитрий Алексеев · внедрение ИИ в бизнес, продажи, CRM и продуктовые прототипы</span><span>ИИ-агенты · CRM-автоматизация · B2B-рост · управление продуктом</span></div>
+    </div>
+  </footer>
+
+  <script>
+    const progress = document.querySelector('.scroll-progress');
+    function updateProgress(){const max=document.documentElement.scrollHeight-window.innerHeight;const pct=max>0?(window.scrollY/max)*100:0;progress.style.width=pct+'%';}
+    window.addEventListener('scroll', updateProgress, {passive:true}); updateProgress();
+
+    const revealItems = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target);}
+      });
+    },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    revealItems.forEach(item=>revealObserver.observe(item));
+
+    const counters = document.querySelectorAll('.count');
+    counters.forEach(counter=>{ counter.textContent = '0'; });
+    function animateCounter(el){
+      const targetRaw = el.dataset.target || '0';
+      const isDecimal = targetRaw.includes('.');
+      const target = Number(targetRaw);
+      const duration = 1300;
+      const start = performance.now();
+      function tick(now){
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = target * eased;
+        el.textContent = new Intl.NumberFormat('ru-RU', {
+          minimumFractionDigits: isDecimal ? 1 : 0,
+          maximumFractionDigits: isDecimal ? 1 : 0
+        }).format(isDecimal ? current : Math.round(current));
+        if(progress < 1) requestAnimationFrame(tick); 
+        else {
+          el.textContent = new Intl.NumberFormat('ru-RU', { 
+            minimumFractionDigits: isDecimal ? 1 : 0, 
+            maximumFractionDigits: isDecimal ? 1 : 0 
+          }).format(target);
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+    const counterObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){animateCounter(entry.target);counterObserver.unobserve(entry.target);}
+      });
+    },{threshold:.25});
+    counters.forEach(counter=>counterObserver.observe(counter));
+
+    document.querySelectorAll('.stat').forEach(stat=>{
+      const obs = new IntersectionObserver((entries)=>entries.forEach(e=>{if(e.isIntersecting){stat.classList.add('visible');obs.disconnect();}}),{threshold:.25});
+      obs.observe(stat);
+    });
+
+    const heroTitle = document.querySelector('.hero-title');
+    const titleAccent = document.querySelector('.title-accent');
+    if(heroTitle && titleAccent){
+      heroTitle.addEventListener('pointermove', event=>{
+        const rect = titleAccent.getBoundingClientRect();
+        titleAccent.style.setProperty('--hx', `${event.clientX - rect.left}px`);
+        titleAccent.style.setProperty('--hy', `${event.clientY - rect.top}px`);
+      });
+    }
+
+    const heroWords = [
+      'быстрее обрабатывать заявки',
+      'собирать отчёты без ручной рутины',
+      'наводить порядок в CRM и данных',
+      'автоматизировать повторяющиеся задачи',
+      'запускать ИИ-системы под процессы компании'
+    ];
+    const heroWordEl = document.querySelector('[data-hero-word]');
+    let heroWordIndex = 0;
+    if(heroWordEl){
+      setInterval(()=>{
+        heroWordIndex = (heroWordIndex + 1) % heroWords.length;
+        heroWordEl.animate([{opacity:.35,transform:'translateY(3px)'},{opacity:1,transform:'translateY(0)'}],{duration:380,easing:'ease-out'});
+        heroWordEl.textContent = heroWords[heroWordIndex];
+      }, 2400);
+    }
+
+    document.querySelectorAll('.case-card').forEach(card=>{
+      card.addEventListener('click',()=>{
+        document.querySelectorAll('.case-card').forEach(item=>item.classList.remove('active'));
+        card.classList.add('active');
+      });
+
+      card.addEventListener('pointermove', event=>{
+        if(window.matchMedia('(max-width: 900px)').matches) return;
+        const rect = card.getBoundingClientRect();
+        const px = (event.clientX - rect.left) / rect.width - .5;
+        const py = (event.clientY - rect.top) / rect.height - .5;
+        card.style.transform = `translateY(-8px) scale(1.01) rotateX(${-py * 4}deg) rotateY(${px * 5}deg)`;
+      });
+
+      card.addEventListener('pointerleave',()=>{
+        card.style.transform = '';
+      });
+    });
+
+    const caseCards = document.querySelectorAll('.case-card');
+    const caseObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          caseCards.forEach(item=>item.classList.remove('active'));
+          entry.target.classList.add('active');
+        }
+      });
+    },{threshold:.56});
+    caseCards.forEach(card=>caseObserver.observe(card));
+
+    const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+    const sections = [...document.querySelectorAll('main section[id], footer[id]')];
+    const navObserver = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          navAnchors.forEach(a=>a.classList.toggle('active-link', a.getAttribute('href') === '#'+entry.target.id));
+        }
+      });
+    },{threshold:.35});
+    sections.forEach(section=>navObserver.observe(section));
+
+    const light = document.querySelector('.cursor-light');
+    let x = window.innerWidth/2, y = window.innerHeight/2;
+    window.addEventListener('pointermove', e=>{x=e.clientX;y=e.clientY;});
+    function moveLight(){light.style.transform = `translate(${x-210}px, ${y-210}px)`;requestAnimationFrame(moveLight)}
+    moveLight();
+  </script>
+</body>
+</html>
