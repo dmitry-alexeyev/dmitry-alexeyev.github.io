@@ -537,12 +537,14 @@
         radial-gradient(ellipse at 50% 52%, rgba(255,255,255,.10), transparent 58%),
         linear-gradient(100deg, transparent 4%, rgba(255,255,255,.045) 46%, transparent 88%);
       mix-blend-mode:screen;
-      animation:heroGradientDrift 9s ease-in-out infinite;
+      will-change:transform,opacity,filter;
+      animation:heroGradientDrift 13s cubic-bezier(.45,0,.25,1) infinite;
     }
 
     @keyframes heroGradientDrift{
-      0%,100%{transform:translate(-50%,-50%) translate3d(0,0,0) scale(1);}
-      50%{transform:translate(-50%,-50%) translate3d(10px,-6px,0) scale(1.025);}
+      0%,100%{transform:translate(-50%,-50%) translate3d(0,0,0) scale(1);opacity:.72;filter:blur(18px);}
+      35%{transform:translate(-50%,-50%) translate3d(5px,-3px,0) scale(1.012);opacity:.76;filter:blur(18.5px);}
+      68%{transform:translate(-50%,-50%) translate3d(-4px,3px,0) scale(1.018);opacity:.74;filter:blur(18px);}
     }
 
     .hero-text-abstract:before{
