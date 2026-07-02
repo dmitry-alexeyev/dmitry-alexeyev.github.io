@@ -78,9 +78,12 @@
     .brand span:before{content:"";position:absolute;left:0;top:50%;width:5px;height:5px;border-radius:50%;background:#9f3144;box-shadow:0 0 0 5px rgba(159,49,68,.10);transform:translateY(-50%)}
     .brand:hover span{color:#fff}
     .nav-links{display:flex;align-items:center;gap:24px;color:#9ba7b6;font-size:13.5px;font-weight:400}
-    .nav-links a{transition:.22s ease}
+    .nav-links a{position:relative;transition:color .22s ease}
+    .nav-links a:not(.nav-cta):after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.84),rgba(198,72,86,.62));transform:scaleX(0);transform-origin:left;opacity:0;transition:transform .24s ease,opacity .24s ease}
+    .nav-links a:not(.nav-cta):hover:after,.nav-links a:not(.nav-cta).active-link:after{transform:scaleX(1);opacity:1}
     .nav-links a:hover,.nav-links a.active-link{color:#fff}
-    .nav-cta{color:#fff!important}
+    .nav-cta{padding:10px 15px;border:1px solid rgba(198,72,86,.34);border-radius:999px;color:#fff!important;background:rgba(157,38,53,.10);transition:color .22s ease,border-color .22s ease,background .22s ease}
+    .nav-cta:hover{border-color:rgba(198,72,86,.48);background:rgba(157,38,53,.16)}
 
     .hero{min-height:calc(78vh - 74px);display:flex;align-items:center;padding:82px 0 42px;position:relative}
     .hero:before{content:"";position:absolute;left:50%;top:49%;width:min(820px,92vw);height:min(600px,72vw);transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(20,41,70,.33),transparent 63%);filter:blur(12px);opacity:.78;z-index:0}
@@ -260,7 +263,7 @@
     .reveal{opacity:0;transform:translateY(12px);transition:opacity .85s ease,transform .85s cubic-bezier(.22,1,.36,1)}
     .reveal.visible{opacity:1;transform:translateY(0)}
     .delay-1{transition-delay:.08s}.delay-2{transition-delay:.16s}
-    .cursor-light{position:fixed;left:0;top:0;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(27,62,104,.16),rgba(157,38,53,.07),transparent 64%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);opacity:.55;filter:blur(4px)}
+    .cursor-light{display:none!important}
 
     @media (max-width: 920px){
       .hero-system{grid-template-columns:1fr;max-width:720px}.hero-microcopy{grid-template-columns:1fr}.hero-panel,.hero-orbit{min-height:auto}.hero-orbit{height:260px}
@@ -534,6 +537,12 @@
         radial-gradient(ellipse at 50% 52%, rgba(255,255,255,.10), transparent 58%),
         linear-gradient(100deg, transparent 4%, rgba(255,255,255,.045) 46%, transparent 88%);
       mix-blend-mode:screen;
+      animation:heroGradientDrift 9s ease-in-out infinite;
+    }
+
+    @keyframes heroGradientDrift{
+      0%,100%{transform:translate(-50%,-50%) translate3d(0,0,0) scale(1);}
+      50%{transform:translate(-50%,-50%) translate3d(10px,-6px,0) scale(1.025);}
     }
 
     .hero-text-abstract:before{
@@ -693,12 +702,14 @@
       .nav-inner{height:auto;min-height:66px;padding:10px 0;align-items:flex-start;flex-direction:column;gap:10px}
       .nav-links{display:flex!important;width:100%;gap:14px 18px;flex-wrap:wrap;overflow:visible;padding-bottom:0}
       .nav-links a{font-size:12.5px;white-space:nowrap;padding:0;border:0;background:none;border-radius:0}
+      .nav-links .nav-cta{padding:7px 11px;border:1px solid rgba(198,72,86,.34);border-radius:999px;background:rgba(157,38,53,.10)}
       .nav-cta{padding:0!important;border:0!important;background:none!important;border-radius:0!important}
     }
     @media (max-width:640px){
       .nav-inner{min-height:58px;padding:8px 0;gap:8px}
       .nav-links{gap:8px 13px}
       .nav-links a{font-size:12px;padding:0}
+      .nav-links .nav-cta{padding:7px 10px}
       .brand{font-size:14px}
     }
 
@@ -764,7 +775,7 @@
       <div class="container">
         <div class="section-head reveal">
           <div><div class="kicker">Кейсы</div><h2 class="cases-title"><span>AI-продукты и AI-системы,</span><span>которые продают результат</span></h2></div>
-          <p class="section-copy">Здесь собраны AI-продукты и AI-системы, которые я лично проектировал, запускал и внедрял в реальные бизнес-сценарии: отчётность, сбор данных, коммерческие отделы, саппорт, расчёты, 3D-направления, чертежи и продуктовые MVP.</p>
+          <p class="section-copy">Здесь собраны AI-продукты и AI-системы, которые я лично проектировал, запускал и внедрял в реальные бизнес-сценарии: отчётность, сбор данных, коммерческие отделы, саппорт, расчёты, 3D-модели, чертежи и продуктовые MVP.</p>
         </div>
         <div class="cases-grid">
 
@@ -774,7 +785,7 @@
             </div>
             <div class="case-body">
               <div class="case-title"><h3>Nika AI</h3><span class="case-number">01</span></div>
-              <p>AI-продукт и ИИ-агент для 3D-инженеров и конструкторов: помогает с рутинными инженерными задачами, поддерживает рабочие процессы и генерирует 3D-модели по фото, тексту и эскизу.</p>
+              <p>AI-продукт и ИИ-агент для 3D-инженеров и конструкторов: помогает с рутинными инженерными задачами, поддерживает рабочие процессы и генерирует 3D-модели по фото, тексту и эскизу. В продукт привлечено 5 500 инженеров, сгенерировано 45 000 3D-моделей, проект привлёк инвестиции 50 000 $ от бизнес-ангелов и фонда, а также получил поддержку Microsoft Azure.</p>
               <div class="case-meta">
                 <span class="pill">AI-продукт</span>
                 <span class="pill">ИИ-ассистент</span>
