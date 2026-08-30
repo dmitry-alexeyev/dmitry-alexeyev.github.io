@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI-продукты и автоматизация бизнеса — Дмитрий Алексеев</title>
-  <meta name="description" content="Запускаю AI-продукты и автоматизацию для B2B и производственных компаний: ИИ-агенты, CRM, продажи, саппорт, аналитика и операционные процессы." />
-  <meta name="author" content="Дмитрий Алексеев" />
+  <title>AI Products & Business Automation — Dmitry Alekseev</title>
+  <meta name="description" content="I launch AI products and automation for B2B and manufacturing companies: AI agents, CRM, sales, support, analytics, and operational processes." />
+  <meta name="author" content="Dmitry Alekseev" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#050608" />
   <meta property="og:type" content="website" />
-  <meta property="og:locale" content="ru_RU" />
-  <meta property="og:title" content="AI-продукты и автоматизация бизнеса — Дмитрий Алексеев" />
-  <meta property="og:description" content="Беру проект под ключ: от разбора процесса и прототипа до интеграций, запуска и измеримого результата." />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="AI Products &amp; Business Automation — Dmitry Alekseev" />
+  <meta property="og:description" content="I take projects end to end: from process analysis and prototyping to integrations, launch, and measurable results." />
   <meta property="og:image" content="https://i.postimg.cc/2ysyzSx5/cc153e90-134f-4e24-b59a-d8fa5d8271ad.jpg" />
-  <meta property="og:image:alt" content="Дмитрий Алексеев — AI-продукты и автоматизация бизнеса" />
+  <meta property="og:image:alt" content="Dmitry Alekseev — AI Products &amp; Business Automation" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="AI-продукты и автоматизация бизнеса — Дмитрий Алексеев" />
-  <meta name="twitter:description" content="Внедряю AI-технологии в бизнес и запускаю проекты с измеримым результатом." />
+  <meta name="twitter:title" content="AI Products &amp; Business Automation — Dmitry Alekseev" />
+  <meta name="twitter:description" content="I implement AI technologies in business and launch projects with measurable results." />
   <meta name="twitter:image" content="https://i.postimg.cc/2ysyzSx5/cc153e90-134f-4e24-b59a-d8fa5d8271ad.jpg" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23050608'/%3E%3Cpath d='M17 45V19h12c12 0 19 4 19 13s-7 13-19 13H17zm9-7h4c7 0 10-2 10-6s-3-6-10-6h-4v12z' fill='%23fff'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -806,6 +806,13 @@
       .hero-title .title-line,.hero-title .title-accent{white-space:normal!important}
       .hero-title{max-width:100%;word-spacing:.035em}
     }
+
+    .lang-switch{display:inline-flex;align-items:center;padding:3px;border:1px solid rgba(218,226,239,.12);border-radius:999px;background:rgba(255,255,255,.025);gap:2px}
+    .lang-switch button{border:0;border-radius:999px;background:transparent;color:#788699;font:500 11px/1 "Inter",sans-serif;letter-spacing:.08em;padding:7px 8px;cursor:pointer;transition:.2s ease}
+    .lang-switch button:hover{color:#fff}
+    .lang-switch button.active{background:rgba(255,255,255,.10);color:#fff}
+    html[lang="en"] .video-box:after{content:"System video overview"}
+    @media(max-width:760px){.lang-switch button{padding:7px 7px}.lang-switch{margin-right:8px}}
   </style>
 </head>
 <body>
@@ -816,6 +823,10 @@
     <div class="container nav-inner">
       <a class="brand" href="#main-content"><span>Дмитрий Алексеев</span></a>
       <div class="nav-links">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" data-lang="en" class="active" aria-pressed="true">EN</button>
+          <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+        </div>
         <a href="#cases">Кейсы</a>
         <a href="#ai-content">AI-контент</a>
         <a href="#websites">Сайты</a>
@@ -1181,6 +1192,88 @@
   </div>
 
   <script>
+
+    const languagePairs = {"AI-продукты и автоматизация бизнеса — Дмитрий Алексеев":"AI Products & Business Automation — Dmitry Alekseev","Перейти к содержанию":"Skip to content","Дмитрий Алексеев":"Dmitry Alekseev","Кейсы":"Case Studies","AI-контент":"AI Content","Сайты":"Websites","Что закрываю":"What I Do","Опыт":"Experience","Связаться":"Contact","Открыт к новым проектам · B2B · продажи · производство":"Open to new projects · B2B · sales · manufacturing","Внедряю AI-технологии":"I implement AI technologies","в бизнес и запускаю проекты":"in business and launch projects","с измеримым результатом":"with measurable results","Беру проект под ключ: нахожу потери в продажах, саппорте или операциях, проектирую решение и довожу его от прототипа до работающей AI-системы, интеграций и понятных бизнес-метрик.":"I take projects end to end: identify losses in sales, support, or operations, design the solution, and take it from prototype to a working AI system, integrations, and clear business metrics.","Обсудить проект":"Discuss a project","Смотреть кейсы":"View case studies","Формат: аудит и прототип · проект под ключ · развитие действующей системы":"Formats: audit & prototype · end-to-end project · development of an existing system","Результаты моей работы":"Results of my work","5 доказательств, что я запускаю не демо, а рабочие AI-продукты и системы роста":"5 proof points that I launch working AI products and growth systems—not demos","Цифры из проектов, где я отвечал за продукт, маркетинг, CRM, AI-автоматизацию, лидогенерацию и внедрение решений в реальные процессы.":"Figures from projects where I was responsible for product, marketing, CRM, AI automation, lead generation, and implementing solutions in real business processes.","уникальных посетителей в месяц через SEO и продуктовую упаковку":"unique monthly visitors through SEO and product positioning","клиентов в базе пром.предприятия, включая 200+ постоянных заказчиков":"clients in a manufacturing company database, including 200+ recurring customers","B2B-заявок в месяц после настройки системной лидогенерации":"B2B leads per month after building a systematic lead-generation engine","млн ₽":"M RUB","потенциальная сумма входящих запросов за месяц без увеличения рекламного бюджета":"potential monthly value of inbound requests without increasing the ad budget","инженеров привлечено в AI-продукт для производства и инженерных задач":"engineers acquired for an AI product for manufacturing and engineering tasks","AI-продукты и AI-системы,":"AI products and AI systems","которые продают результат":"that deliver business results","В большинстве проектов я выступал не только исполнителем, но и автором или соавтором идеи: формировал продуктовую логику, организовывал запуск и отвечал за результат.":"In most projects, I was not only an executor but also the author or co-author of the idea: I shaped the product logic, organized the launch, and owned the outcome.","AI-агент для 3D-инженеров: помогает решать рутинные задачи и генерировать модели по фото, тексту и эскизу. Результат: 5 500 инженеров, 45 000 моделей, 50 000 $ инвестиций и поддержка Microsoft Azure.":"An AI agent for 3D engineers that handles routine tasks and generates models from photos, text, and sketches. Results: 5,500 engineers, 45,000 models, $50,000 in investment, and Microsoft Azure support.","Моя роль":"My role","Соавтор идеи, CPO и сооснователь: продуктовая концепция, приоритеты, постановка задач, запуск и подготовка к инвестициям.":"Co-author of the idea, CPO, and co-founder: product concept, priorities, task setting, launch, and investment preparation.","AI-продукт":"AI product","ИИ-ассистент":"AI assistant","Поддержка":"Support","Рабочие процессы":"Workflows","B2B-система для автоматизации отчётности и управленческого контроля. Собирает данные из разных источников, структурирует их и ускоряет подготовку понятных отчётов.":"A B2B system for automating reporting and management control. It collects data from multiple sources, structures it, and speeds up the preparation of clear reports.","Автор продуктовой идеи и B2B-сценария: логика сбора данных, структура отчётов и путь пользователя.":"Author of the product idea and B2B use case: data-collection logic, report structure, and user journey.","AI-система":"AI system","ИИ-отчёты":"AI reports","Сбор данных":"Data collection","Без сложных интеграций":"No complex integrations","Калькулятор для 3D":"3D Calculator","AI-калькулятор для подбора параметров и оценки стоимости в 3D-направлении. Переводит запрос клиента в понятный расчёт без долгой ручной подготовки.":"An AI calculator for selecting parameters and estimating costs in 3D projects. It turns a client request into a clear calculation without lengthy manual preparation.","Проработал продуктовую логику: сценарий расчёта, требования к системе и проверка прототипа на реальных запросах.":"Developed the product logic: calculation flow, system requirements, and prototype validation on real requests.","Калькулятор":"Calculator","Видео-обзор":"Video overview","Автоматизация расчётов":"Calculation automation","AI-система управления аддитивным производством":"AI Additive Manufacturing Management System","Система объединяет календарь производства, учёт материалов, загрузку оборудования и графики команды в одном рабочем контуре.":"The system combines the production calendar, material tracking, equipment utilization, and team schedules in a single workflow.","Спроектировал архитектуру прототипа и объединил разрозненные производственные операции в единый управляемый сценарий.":"Designed the prototype architecture and combined fragmented production operations into one manageable workflow.","Аддитивное производство":"Additive manufacturing","Календарь производства":"Production calendar","Склад материалов":"Material inventory","Управление персоналом":"Team management","Система автоматического создания чертежей":"Automated Drawing Generation System","Система автоматически формирует чертежи и техническую документацию из исходных данных. Результат: до 35 чертежей в день вместо 4.":"The system automatically generates drawings and technical documentation from source data. Result: up to 35 drawings per day instead of 4.","Описал правила, поставил задачу на автоматизацию и организовал проверку на рабочем инженерном сценарии.":"Defined the rules, set the automation requirements, and organized validation in a real engineering workflow.","Инженерные задачи":"Engineering tasks","Чертежи":"Drawings","ИИ-автоматизация":"AI automation","3D-платформа с облачным хранилищем, AI-ассистентом, калькулятором, библиотекой моделей, обучением и магазином. Проект дошёл до предпосевной стадии и первых продаж.":"A 3D platform with cloud storage, an AI assistant, calculator, model library, learning content, and a marketplace. The project reached the pre-seed stage and first sales.","Соавтор идеи, CPO и сооснователь: архитектура платформы, прототип, упаковка, цифровые каналы и коммерческий запуск.":"Co-author of the idea, CPO, and co-founder: platform architecture, prototype, positioning, digital channels, and commercial launch.","прототип":"prototype","библиотека 3D-моделей":"3D model library","образовательные курсы":"educational courses","магазин материалов и оборудования":"materials & equipment marketplace","AI-визуал и фото":"AI visuals & photography","AI-сервис для создания и обработки фото без промта: товарные и групповые изображения, а также генерация визуалов по референсу.":"An AI service for creating and editing images without prompts: product and group photos, plus visual generation from a reference.","Основатель и автор идеи: самостоятельно придумал, спроектировал и разработал продукт — от сценариев без промптинга до работающего сервиса.":"Founder and author of the idea: independently conceived, designed, and developed the product—from prompt-free workflows to a working service.","Без промта":"No prompts","Фото по референсу":"Reference-based images","Товарные фото":"Product photos","Групповые фото":"Group photos","Стек компетенций":"Skill stack","Инструменты, навыки и направления экспертизы":"Tools, skills, and areas of expertise","Здесь собраны инструменты и компетенции, которые использую в проектах. Ниже — конкретные задачи, которые могу взять на себя: от анализа процесса и прототипа до внедрения и измерения результата.":"These are the tools and capabilities I use in projects. Below are specific tasks I can take on—from process analysis and prototyping to implementation and measuring results.","ИИ":"AI","ИИ-агенты и AI-системы":"AI agents and AI systems","GPT/LLM-сценарии, базы знаний, промпт-логика, AI-ассистенты для первичной обработки лидов, продаж, саппорта, отчётности, расчётов, документации и внутренних процессов.":"GPT/LLM workflows, knowledge bases, prompt logic, and AI assistants for lead qualification, sales, support, reporting, calculations, documentation, and internal processes.","CRM и автоматизация":"CRM and automation","AmoCRM, Bitrix24, воронки, задачи, статусы, автоворонки, обработка заявок, контроль менеджеров, клиентские коммуникации и интеграции с сайтами.":"AmoCRM, Bitrix24, pipelines, tasks, statuses, automated funnels, lead processing, manager oversight, client communications, and website integrations.","Продукт":"Product","Продукт и MVP":"Product and MVP","Продуктовая логика, CJM, прототипы, ТЗ, приоритизация, проверка гипотез, релизы, упаковка AI-продуктов и доведение решения до пользователей.":"Product logic, CJM, prototypes, specifications, prioritization, hypothesis testing, releases, AI-product positioning, and delivering the solution to users.","Маркетинг":"Marketing","B2B-маркетинг и продающий контент":"B2B marketing and conversion-focused content","SEO, контекст, лендинги, сайты, презентации, офферы, рассылки, продающие тексты, контент для соцсетей, упаковка продукта и системная лидогенерация.":"SEO, paid search, landing pages, websites, presentations, offers, email campaigns, conversion copy, social content, product positioning, and systematic lead generation.","Аналитика":"Analytics","Анализ рынка, конкурентов и данных":"Market, competitor, and data analysis","Исследование рынка, конкурентный анализ, аудит воронки, анализ спроса, клиентских сегментов, коммерческих гипотез, метрик, отчётности и точек роста.":"Market research, competitor analysis, funnel audits, demand analysis, customer segments, commercial hypotheses, metrics, reporting, and growth opportunities.","Отрасли":"Industries","Производство и инженерные задачи":"Manufacturing and engineering tasks","Калькуляторы, чертежи, аддитивное производство, документация, оценка стоимости и автоматизация технических процессов.":"Calculators, drawings, additive manufacturing, documentation, cost estimation, and automation of technical processes.","Сайты и лендинги":"Websites and landing pages","Делаю сайты и лендинги быстро и качественно":"I build websites and landing pages quickly and to a high standard","Сайт для производственного направления с акцентом на структуру услуг, доверие и понятную подачу B2B-предложения.":"A website for a manufacturing business focused on service structure, trust, and clear B2B positioning.","Коммерческий сайт для нишевого продукта: короткий путь к заявке, понятная навигация и визуальная упаковка предложения.":"A commercial website for a niche product: a short path to inquiry, clear navigation, and strong visual positioning.","Продуктовая страница AI-агента для 3D-инженеров и конструкторов с фокусом на возможности сервиса и сценарии применения.":"A product page for an AI agent for 3D engineers and designers, focused on capabilities and use cases.","Сайт 3D-направления: услуги, продуктовая логика, подача экспертности и понятный вход для клиентов.":"A website for a 3D business line: services, product logic, expert positioning, and a clear entry point for clients.","Международная витрина 3D-проекта: лаконичная упаковка продукта, визуальные акценты и быстрый переход к сути предложения.":"An international showcase for a 3D project: concise product positioning, visual emphasis, and a fast path to the core offer.","Посадочная страница образовательного продукта по 3D-моделированию: структура курса, оффер и путь пользователя к обучению.":"A landing page for a 3D-modeling educational product: course structure, offer, and user journey into the program.","Также развивал контент для соцсетей: визуальная подача, экспертные публикации, короткие видео, продуктовые материалы и коммуникация вокруг 3D-направления.":"I also developed social media content: visual direction, expert posts, short videos, product materials, and communications around the 3D business line.","AI-контент и рекламные кампании":"AI content and advertising campaigns","Создаю контент, запускаю рекламу и выстраиваю систему привлечения заявок":"I create content, run ads, and build a system for generating leads","От отдельных материалов и кампаний до системного ведения каналов.":"From individual assets and campaigns to systematic channel management.","Презентации":"Presentations","презентаций подготовлено":"presentations created","Инвестиционные, продуктовые и коммерческие материалы для руководителей, клиентов и продаж.":"Investment, product, and commercial materials for executives, clients, and sales teams.","Реклама":"Advertising","B2B-лидов привлечено":"B2B leads generated","Запускаю таргетированную рекламу, Яндекс Директ, Google Ads и кампании в социальных сетях.":"I run targeted advertising, Yandex Direct, Google Ads, and social media campaigns.","Видео":"Video","2,5 млн+":"2.5M+","просмотров одного ролика":"views on a single video","Создаю продающие видео для соцсетей и рекламы, которые приносят заявки.":"I create conversion-focused videos for social media and advertising that generate inquiries.","Системный подход:":"Systematic approach:","связываю контент, рекламу, аналитику и CRM, автоматизирую ведение соцсетей и выпуск материалов.":"I connect content, advertising, analytics, and CRM, while automating social media management and content production.","Смотреть примеры работ":"View work examples","Обсудить задачу":"Discuss a task","С какими проектами работаю":"Projects I work with","Беру на себя конкретную бизнес-задачу и довожу её до внедрения":"I take ownership of a specific business problem and carry it through implementation","Подключаюсь к проекту целиком или к отдельному этапу: разбираю процесс и экономику, собираю прототип, координирую разработку и интеграции, запускаю решение и измеряю эффект.":"I can join an entire project or a specific stage: analyze the process and economics, build a prototype, coordinate development and integrations, launch the solution, and measure the impact.","AI-агенты для первичного обращения лидов":"AI agents for first-touch lead handling","Проектирую ИИ-агентов, которые принимают первое обращение, уточняют задачу, квалифицируют клиента, собирают данные и передают менеджеру уже подготовленный контекст.":"I design AI agents that handle the first inquiry, clarify the need, qualify the client, collect data, and pass a prepared context to the sales manager.","Автоматизация саппорта и базы знаний":"Support and knowledge-base automation","Собираю сценарии поддержки: ответы на типовые вопросы, поиск по базе знаний, маршрутизация обращений, контроль SLA и снижение ручной нагрузки на команду.":"I build support workflows: answers to common questions, knowledge-base search, request routing, SLA monitoring, and reduced manual workload for the team.","CRM, продажи и коммерческая воронка":"CRM, sales, and the commercial funnel","Настраиваю воронки, статусы, автозадачи, отчётность, контроль обработки заявок и AI-сценарии, которые помогают менеджерам быстрее доводить лиды до сделки.":"I configure pipelines, statuses, automated tasks, reporting, lead-processing control, and AI workflows that help sales teams move leads to closed deals faster.","Аналитика, рынок и конкуренты":"Analytics, market, and competitors","Провожу анализ рынка, конкурентов, спроса, клиентских сегментов, воронки, рекламных гипотез и точек роста, чтобы решения опирались не на ощущения, а на данные.":"I analyze the market, competitors, demand, customer segments, funnels, advertising hypotheses, and growth opportunities so decisions are based on data rather than intuition.","Презентации, сайты и продающий контент":"Presentations, websites, and conversion-focused content","Собираю структуру оффера, презентации, лендинги, сайты, коммерческие материалы, тексты и контент, которые объясняют продукт, усиливают доверие и ведут к заявке.":"I create offer structures, presentations, landing pages, websites, commercial materials, copy, and content that explain the product, build trust, and drive inquiries.","Маркетинг и лидогенерация":"Marketing and lead generation","Выстраиваю связку сайта, контента, SEO, рекламы, CRM, аналитики и обработки лидов, чтобы маркетинг работал как система, а не как набор разрозненных действий.":"I connect website, content, SEO, advertising, CRM, analytics, and lead handling so marketing works as a system rather than a set of disconnected activities.","AI-продукты и продуктовые прототипы":"AI products and product prototypes","Перевожу идею в продуктовую логику, сценарии пользователя, MVP, ТЗ, интерфейсы, релизы и проверку на реальных пользователях или внутренних командах.":"I turn an idea into product logic, user flows, an MVP, specifications, interfaces, releases, and validation with real users or internal teams.","Производственные, инженерные и операционные процессы":"Manufacturing, engineering, and operational processes","Автоматизирую расчёты, документацию, чертежи, отчёты, сбор данных и повторяющиеся операции, где AI может ускорить работу без потери контроля качества.":"I automate calculations, documentation, drawings, reports, data collection, and repetitive operations where AI can speed up work without losing quality control.","Обо мне":"About me","CPO, сооснователь AI-продуктов и интегратор ИИ":"CPO, AI-product co-founder, and AI integration specialist","Работаю с B2B, производственными и цифровыми проектами.":"I work with B2B, manufacturing, and digital projects.","Профиль":"Profile","Запускаю AI-продукты и автоматизацию, соединяя задачи бизнеса с продуктом и разработкой.":"I launch AI products and automation by connecting business needs with product and development.","B2B-результат":"B2B results","Связка маркетинга, CRM и AI-сценариев увеличила конверсию из лида в продажу до 17,7%.":"A combination of marketing, CRM, and AI workflows increased lead-to-sale conversion to 17.7%.","Подход":"Approach","Сначала процесс и метрика. Затем — прототип, интеграции, запуск и улучшение результата.":"First the process and the metric. Then the prototype, integrations, launch, and performance improvement.","Образование и акселераторы":"Education and accelerators","Бакалавр информационных технологий. Диплом — автоматизация систем управления. Прошёл обучение по внедрению AI и акселерационные программы ИТМО и «Терриконовой долины».":"Bachelor’s degree in Information Technology. Thesis focused on control-system automation. Completed AI implementation training and accelerator programs at ITMO and Terricon Valley.","Гранты и экспертность":"Grants and expertise","Получал грантовую поддержку Microsoft Azure и Google. Выступал экспертом в составе жюри Технопарка Санкт-Петербурга.":"Received grant support from Microsoft Azure and Google. Served as an expert judge for the St. Petersburg Technopark.","Публичная работа":"Public speaking","Провожу вебинары, публичные выступления, презентации и рабочие собрания для команд, клиентов и партнёров.":"I run webinars, public talks, presentations, and working sessions for teams, clients, and partners.","Управление":"Management","Опыт управления командой до 10 человек, проектными задачами и бюджетами.":"Experience managing teams of up to 10 people, project work, and budgets.","Контакт":"Contact","Есть процесс, который нужно ускорить или автоматизировать?":"Is there a process you need to speed up or automate?","Напишите, что происходит сейчас, где возникают потери и какого результата хотите достичь. Я предложу возможный формат проекта: аудит, быстрый прототип, внедрение под ключ или развитие уже работающей системы.":"Tell me what is happening now, where the losses occur, and what result you want to achieve. I’ll suggest a suitable project format: audit, rapid prototype, end-to-end implementation, or development of an existing system.","Рассказать о проекте":"Tell me about your project","Написать на почту":"Send an email","AI-продукты и ИИ-агенты для компаний, где важны продажи, скорость обработки лидов, автоматизация саппорта, отчётность и управляемые процессы.":"AI products and AI agents for companies where sales, lead-response speed, support automation, reporting, and controlled processes matter.","Телеграм":"Telegram","Почта":"Email","Телефон":"Phone","Город":"Location","Санкт-Петербург · удалённо / гибрид":"St. Petersburg · remote / hybrid","Обо мне и опыт":"About & experience","Наверх ↑":"Back to top ↑","Дмитрий Алексеев · AI-продукты и автоматизация под ключ":"Dmitry Alekseev · End-to-end AI products & automation","ИИ-агенты · CRM · продажи и саппорт · B2B · производственные процессы":"AI agents · CRM · sales & support · B2B · manufacturing processes","Примеры работ":"Work examples","Галерея скоро появится":"Gallery coming soon","Добавляю подборку фото, рекламных креативов, презентаций и видео с результатами.":"I’m adding a selection of photos, ad creatives, presentations, and videos with results.","Понятно":"Got it","Запускаю AI-продукты и автоматизацию для B2B и производственных компаний: ИИ-агенты, CRM, продажи, саппорт, аналитика и операционные процессы.":"I launch AI products and automation for B2B and manufacturing companies: AI agents, CRM, sales, support, analytics, and operational processes.","Беру проект под ключ: от разбора процесса и прототипа до интеграций, запуска и измеримого результата.":"I take projects end to end: from process analysis and prototyping to integrations, launch, and measurable results.","Дмитрий Алексеев — AI-продукты и автоматизация бизнеса":"Dmitry Alekseev — AI Products & Business Automation","Внедряю AI-технологии в бизнес и запускаю проекты с измеримым результатом.":"I implement AI technologies in business and launch projects with measurable results.","Основная навигация":"Main navigation","Nika AI — обзор системы":"Nika AI — system overview","Lumetrya — обзор ИИ-системы для бизнеса":"Lumetrya — AI system overview for business","Калькулятор для 3D — видео-обзор системы":"3D Calculator — system video overview","AI-система управления аддитивным производством — видео-обзор":"AI additive manufacturing management system — video overview","Система автоматического создания чертежей — видео":"Automated drawing generation system — video","Teleport3D — обзор AI-продукта":"Teleport3D — AI product overview","Lumarium.art — вертикальное видео":"Lumarium.art — vertical video","Галерея сайтов":"Website gallery","Предыдущий сайт":"Previous website","Открыть rtiplast.kz":"Open rtiplast.kz","Открыть neopren.kz":"Open neopren.kz","Открыть 3dnika.com":"Open 3dnika.com","Открыть teleport3d.kz":"Open teleport3d.kz","Открыть teleport3d.com":"Open teleport3d.com","Открыть страницу курса 3D Modeling School":"Open the 3D Modeling School course page","Следующий сайт":"Next website","Обсуждение%20AI-проекта":"Discussing%20an%20AI%20project","Закрыть":"Close","Язык":"Language"};
+    let currentLanguage = 'en';
+    const translatableAttributes = ['aria-label','alt','title','content','href'];
+    const originalTextNodes = new WeakMap();
+    const originalElementAttributes = new WeakMap();
+
+    function translatedValue(value, lang){
+      if(typeof value !== 'string') return value;
+      if(lang === 'en') return languagePairs[value] || value;
+      for(const [ru,en] of Object.entries(languagePairs)){ if(value === en) return ru; }
+      return value;
+    }
+
+    function translateTextNode(node, lang){
+      if(!originalTextNodes.has(node)) originalTextNodes.set(node,node.nodeValue);
+      const raw = originalTextNodes.get(node);
+      const trimmed = raw.trim();
+      if(!trimmed) return;
+      const translated = lang === 'en' ? (languagePairs[trimmed] || trimmed) : trimmed;
+      const start = raw.indexOf(trimmed);
+      node.nodeValue = raw.slice(0,start) + translated + raw.slice(start + trimmed.length);
+    }
+
+    function originalAttributesFor(el){
+      if(!originalElementAttributes.has(el)){
+        const values = {};
+        translatableAttributes.forEach(attr=>{ if(el.hasAttribute(attr)) values[attr]=el.getAttribute(attr); });
+        originalElementAttributes.set(el,values);
+      }
+      return originalElementAttributes.get(el);
+    }
+
+    function applyLanguage(lang){
+      currentLanguage = lang === 'ru' ? 'ru' : 'en';
+      document.documentElement.lang = currentLanguage;
+      document.querySelectorAll('[data-lang]').forEach(button=>{
+        const active = button.dataset.lang === currentLanguage;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      document.querySelector('.lang-switch')?.setAttribute('aria-label', currentLanguage === 'ru' ? 'Язык' : 'Language');
+
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      let node;
+      while((node = walker.nextNode())){
+        if(node.parentElement?.closest('script,style')) continue;
+        translateTextNode(node,currentLanguage);
+      }
+
+      document.querySelectorAll('body *').forEach(el=>{
+        const originals = originalAttributesFor(el);
+        Object.entries(originals).forEach(([attr,source])=>{
+          let translated = currentLanguage === 'en' ? (languagePairs[source] || source) : source;
+          if(attr === 'href' && source.includes('Обсуждение%20AI-проекта')) translated = currentLanguage === 'en' ? source.replace('Обсуждение%20AI-проекта','Discussing%20an%20AI%20project') : source;
+          el.setAttribute(attr,translated);
+        });
+      });
+
+      document.title = currentLanguage === 'ru' ? 'AI-продукты и автоматизация бизнеса — Дмитрий Алексеев' : 'AI Products & Business Automation — Dmitry Alekseev';
+      const headMetaMap = [
+        ['meta[name="description"]','Запускаю AI-продукты и автоматизацию для B2B и производственных компаний: ИИ-агенты, CRM, продажи, саппорт, аналитика и операционные процессы.','I launch AI products and automation for B2B and manufacturing companies: AI agents, CRM, sales, support, analytics, and operational processes.'],
+        ['meta[name="author"]','Дмитрий Алексеев','Dmitry Alekseev'],
+        ['meta[property="og:title"]','AI-продукты и автоматизация бизнеса — Дмитрий Алексеев','AI Products & Business Automation — Dmitry Alekseev'],
+        ['meta[property="og:description"]','Беру проект под ключ: от разбора процесса и прототипа до интеграций, запуска и измеримого результата.','I take projects end to end: from process analysis and prototyping to integrations, launch, and measurable results.'],
+        ['meta[property="og:image:alt"]','Дмитрий Алексеев — AI-продукты и автоматизация бизнеса','Dmitry Alekseev — AI Products & Business Automation'],
+        ['meta[name="twitter:title"]','AI-продукты и автоматизация бизнеса — Дмитрий Алексеев','AI Products & Business Automation — Dmitry Alekseev'],
+        ['meta[name="twitter:description"]','Внедряю AI-технологии в бизнес и запускаю проекты с измеримым результатом.','I implement AI technologies in business and launch projects with measurable results.']
+      ];
+      headMetaMap.forEach(([selector,ru,en])=>document.querySelector(selector)?.setAttribute('content',currentLanguage === 'ru' ? ru : en));
+      document.querySelector('meta[property="og:locale"]')?.setAttribute('content', currentLanguage === 'ru' ? 'ru_RU' : 'en_US');
+
+      document.querySelectorAll('.count').forEach(counter=>{
+        const targetRaw = counter.dataset.target || '0';
+        const isDecimal = targetRaw.includes('.');
+        const value = Number(targetRaw);
+        if(Number.isFinite(value)) counter.textContent = new Intl.NumberFormat(currentLanguage === 'ru' ? 'ru-RU' : 'en-US',{minimumFractionDigits:isDecimal?1:0,maximumFractionDigits:isDecimal?1:0}).format(value);
+      });
+    }
+
+    document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>applyLanguage(button.dataset.lang)));
+    applyLanguage('en');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const contentModal = document.querySelector('[data-content-modal]');
     const openContentModalButton = document.querySelector('[data-open-content-modal]');
@@ -1232,13 +1325,13 @@
         const progress = Math.min((now - start) / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
         const current = target * eased;
-        el.textContent = new Intl.NumberFormat('ru-RU', {
+        el.textContent = new Intl.NumberFormat(currentLanguage === 'ru' ? 'ru-RU' : 'en-US', {
           minimumFractionDigits: isDecimal ? 1 : 0,
           maximumFractionDigits: isDecimal ? 1 : 0
         }).format(isDecimal ? current : Math.round(current));
         if(progress < 1) requestAnimationFrame(tick); 
         else {
-          el.textContent = new Intl.NumberFormat('ru-RU', { 
+          el.textContent = new Intl.NumberFormat(currentLanguage === 'ru' ? 'ru-RU' : 'en-US', { 
             minimumFractionDigits: isDecimal ? 1 : 0, 
             maximumFractionDigits: isDecimal ? 1 : 0 
           }).format(target);
@@ -1255,7 +1348,7 @@
       if(reduceMotion){
         const targetRaw = counter.dataset.target || '0';
         const isDecimal = targetRaw.includes('.');
-        counter.textContent = new Intl.NumberFormat('ru-RU',{minimumFractionDigits:isDecimal?1:0,maximumFractionDigits:isDecimal?1:0}).format(Number(targetRaw));
+        counter.textContent = new Intl.NumberFormat(currentLanguage === 'ru' ? 'ru-RU' : 'en-US',{minimumFractionDigits:isDecimal?1:0,maximumFractionDigits:isDecimal?1:0}).format(Number(targetRaw));
       } else counterObserver.observe(counter);
     });
 
@@ -1274,20 +1367,29 @@
       });
     }
 
-    const heroWords = [
-      'быстрее обрабатывать первичные обращения лидов',
-      'автоматизировать саппорт и базу знаний',
-      'наводить порядок в CRM и данных',
-      'запускать AI-продукты под процессы компании',
-      'сокращать ручную рутину в продажах и операциях'
-    ];
+    const heroWordsByLanguage = {
+      en:[
+        'handle first-touch leads faster',
+        'automate support and the knowledge base',
+        'bring order to CRM and data',
+        'launch AI products around company workflows',
+        'reduce manual work in sales and operations'
+      ],
+      ru:[
+        'быстрее обрабатывать первичные обращения лидов',
+        'автоматизировать саппорт и базу знаний',
+        'наводить порядок в CRM и данных',
+        'запускать AI-продукты под процессы компании',
+        'сокращать ручную рутину в продажах и операциях'
+      ]
+    };
     const heroWordEl = document.querySelector('[data-hero-word]');
     let heroWordIndex = 0;
     if(heroWordEl){
       setInterval(()=>{
-        heroWordIndex = (heroWordIndex + 1) % heroWords.length;
+        heroWordIndex = (heroWordIndex + 1) % heroWordsByLanguage[currentLanguage].length;
         heroWordEl.animate([{opacity:.35,transform:'translateY(3px)'},{opacity:1,transform:'translateY(0)'}],{duration:380,easing:'ease-out'});
-        heroWordEl.textContent = heroWords[heroWordIndex];
+        heroWordEl.textContent = heroWordsByLanguage[currentLanguage][heroWordIndex];
       }, 2400);
     }
 
