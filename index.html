@@ -821,6 +821,261 @@
     .lang-switch button.active{background:rgba(255,255,255,.10);color:#fff}
     html[lang="en"] .video-box:after{content:"System video overview"}
     @media(max-width:760px){.lang-switch button{padding:7px 7px}.lang-switch{margin-right:8px}}
+  
+
+    /* =========================================================
+       READABILITY + MOTION UPGRADE
+       Added without removing any existing content or components.
+       ========================================================= */
+    :root{
+      --readable-copy:#b9c4d3;
+      --readable-strong:#d8e1ed;
+      --motion-ease:cubic-bezier(.22,1,.36,1);
+      --motion-fast:280ms;
+      --motion-mid:620ms;
+    }
+
+    body{
+      font-kerning:normal;
+      font-synthesis:none;
+      font-feature-settings:"kern" 1,"liga" 1,"calt" 1;
+    }
+
+    h1,h2,h3{
+      text-wrap:balance;
+      -webkit-font-smoothing:antialiased;
+    }
+    p,.section-copy,.footer-lead,.stat-label,.case-role span{
+      text-wrap:pretty;
+    }
+
+    /* More breathing room and clearer rhythm for long English / Russian headings */
+    h2{
+      line-height:1.16;
+      letter-spacing:-.026em;
+    }
+    h3,
+    .card h3,.resume-card h3,.step h3,.case-body h3,
+    .about-info-card h3,.ai-content-card h3{
+      line-height:1.28;
+      letter-spacing:-.018em;
+    }
+    h1.hero-title,
+    .hero-title{
+      line-height:1.095;
+      letter-spacing:-.038em;
+    }
+
+    /* Higher text contrast + comfortable reading measure */
+    .lead{
+      color:#c4cedb;
+      line-height:1.78;
+      max-width:880px;
+    }
+    .section-copy{
+      color:#b8c4d2;
+      line-height:1.78;
+      max-width:68ch;
+    }
+    .card p,.case-body p,.step p,.about-text,.about-row p,
+    .about-info-card p,.ai-content-card p,.lumarium-copy p,
+    .footer-lead,.resume-card li,.ai-content-action p{
+      color:var(--readable-copy);
+      line-height:1.74;
+    }
+    .case-role span,.stat-label,.micro-card{
+      line-height:1.56;
+    }
+    .kicker,.tag,.step-num,.stats-eyebrow,.about-mini-label,
+    .about-info-card>span,.about-row-title{
+      letter-spacing:.16em;
+    }
+
+    /* Section-title reading cue: a quiet line grows when a section enters view */
+    .section-head h2,.lumarium-copy h2,.ai-content-shell h2,
+    .about-section h2,.footer h2,.content-modal-card h2{
+      position:relative;
+    }
+    .section-head h2:after,.lumarium-copy h2:after,.ai-content-shell h2:after,
+    .about-section .section-head h2:after,.footer h2:after{
+      content:"";
+      display:block;
+      width:min(170px,34%);
+      height:1px;
+      margin-top:16px;
+      border-radius:999px;
+      background:linear-gradient(90deg,rgba(255,255,255,.74),rgba(55,104,168,.86),rgba(198,72,86,.78),transparent);
+      transform:scaleX(.18);
+      transform-origin:left center;
+      opacity:.24;
+      transition:transform 900ms var(--motion-ease),opacity 700ms ease,filter 700ms ease;
+    }
+    section.reading-active .section-head h2:after,
+    section.reading-active .lumarium-copy h2:after,
+    section.reading-active .ai-content-shell h2:after,
+    footer.reading-active h2:after{
+      transform:scaleX(1);
+      opacity:.86;
+      filter:drop-shadow(0 0 10px rgba(82,127,188,.24));
+    }
+
+    /* Progressive text reveal makes dense sections easier to scan */
+    .motion-ready .readability-item{
+      opacity:.62;
+      transform:translate3d(0,10px,0);
+      filter:blur(1.1px);
+      transition:
+        opacity 720ms var(--motion-ease),
+        transform 720ms var(--motion-ease),
+        filter 720ms ease;
+      transition-delay:var(--read-delay,0ms);
+      will-change:opacity,transform,filter;
+    }
+    .motion-ready .readability-item.is-readable{
+      opacity:1;
+      transform:translate3d(0,0,0);
+      filter:blur(0);
+    }
+
+    /* Extra depth, without changing layout */
+    .card,.step,.about-info-card,.about-profile-card,.resume-card,
+    .ai-content-card,.ai-content-shell,.stats-shell,.footer-panel,
+    .website-card,.lumarium-case{
+      transition:
+        transform 360ms var(--motion-ease),
+        border-color 360ms ease,
+        background-color 360ms ease,
+        box-shadow 420ms var(--motion-ease),
+        filter 360ms ease;
+    }
+
+    @media (hover:hover) and (pointer:fine){
+      .card:hover,.step:hover,.about-info-card:hover,.ai-content-card:hover,.resume-card:hover{
+        box-shadow:0 22px 64px rgba(0,0,0,.24),inset 0 0 0 1px rgba(255,255,255,.025);
+      }
+      .about-profile-card:hover,.ai-content-shell:hover,.stats-shell:hover,.footer-panel:hover,.lumarium-case:hover{
+        border-color:rgba(218,226,239,.19);
+        box-shadow:0 30px 88px rgba(0,0,0,.30),inset 0 0 0 1px rgba(255,255,255,.025);
+      }
+
+      /* Case cards stay stable (no tilt), but feel alive through their contents */
+      .case-card .case-body{
+        transition:background-color 340ms ease,transform 420ms var(--motion-ease);
+      }
+      .case-card:hover .case-body,.case-card.active .case-body{
+        background:linear-gradient(180deg,rgba(255,255,255,.018),transparent);
+        transform:translateY(-2px);
+      }
+      .case-card .video-box iframe{
+        transition:transform 620ms var(--motion-ease),filter 420ms ease;
+      }
+      .case-card:hover .video-box iframe,.case-card.active .video-box iframe{
+        transform:scale(1.008);
+        filter:brightness(1.045) saturate(1.035);
+      }
+    }
+
+    /* Buttons: subtle light pass instead of a distracting bounce */
+    .btn{
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .btn:before{
+      content:"";
+      position:absolute;
+      z-index:-1;
+      top:-45%;
+      bottom:-45%;
+      left:-38%;
+      width:28%;
+      pointer-events:none;
+      opacity:0;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);
+      transform:translateX(-180%) skewX(-18deg);
+      transition:transform 680ms var(--motion-ease),opacity 220ms ease;
+    }
+    .btn:hover:before,.btn:focus-visible:before{
+      opacity:.72;
+      transform:translateX(620%) skewX(-18deg);
+    }
+
+    /* Navigation gains separation from content while scrolling */
+    .nav{
+      transition:background-color 280ms ease,border-color 280ms ease,box-shadow 320ms ease;
+    }
+    .nav.nav-scrolled{
+      background:rgba(5,6,8,.88);
+      border-bottom-color:rgba(218,226,239,.13);
+      box-shadow:0 12px 42px rgba(0,0,0,.22);
+    }
+
+    /* Small entrance emphasis for metrics */
+    .stat.visible .stat-number{
+      animation:metricResolve 720ms var(--motion-ease) both;
+    }
+    @keyframes metricResolve{
+      0%{opacity:.48;transform:translateY(7px);filter:blur(1px)}
+      100%{opacity:1;transform:translateY(0);filter:blur(0)}
+    }
+
+    /* Calm hero motion adds depth without hurting legibility */
+    .hero-avatar{
+      animation:avatarFloat 6.5s ease-in-out infinite;
+    }
+    @keyframes avatarFloat{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-5px)}
+    }
+
+    /* Better keyboard reading/focus visibility on interactive cards and links */
+    .case-card:focus-within,.website-card:focus-within,.footer-panel:focus-within,
+    .card:focus-within,.step:focus-within{
+      border-color:rgba(198,72,86,.42);
+      box-shadow:0 0 0 1px rgba(198,72,86,.15),0 22px 60px rgba(0,0,0,.26);
+    }
+
+    @media(max-width:980px){
+      .section-copy{max-width:76ch;}
+      .section-head h2:after,.lumarium-copy h2:after,.ai-content-shell h2:after,.footer h2:after{margin-top:13px;}
+    }
+
+    @media(max-width:640px){
+      h1.hero-title,.hero-title{
+        line-height:1.12;
+        letter-spacing:-.03em;
+      }
+      h2{line-height:1.2;letter-spacing:-.018em;}
+      h3,.card h3,.resume-card h3,.step h3,.case-body h3,.about-info-card h3,.ai-content-card h3{
+        line-height:1.32;
+        letter-spacing:-.012em;
+      }
+      .lead{line-height:1.66;}
+      .section-copy,.card p,.case-body p,.step p,.about-text,.about-row p,
+      .about-info-card p,.ai-content-card p,.lumarium-copy p,.footer-lead,.resume-card li{
+        line-height:1.68;
+      }
+      .motion-ready .readability-item{transform:translate3d(0,7px,0);filter:none;}
+      .hero-avatar{animation-duration:7.5s;}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .hero-avatar,.stat.visible .stat-number{animation:none!important;}
+      .motion-ready .readability-item,.readability-item{
+        opacity:1!important;
+        transform:none!important;
+        filter:none!important;
+        transition:none!important;
+      }
+      .section-head h2:after,.lumarium-copy h2:after,.ai-content-shell h2:after,
+      .about-section .section-head h2:after,.footer h2:after{
+        transform:scaleX(1)!important;
+        opacity:.62!important;
+        transition:none!important;
+      }
+      .btn:before{display:none!important;}
+    }
+
   </style>
 </head>
 <body>
@@ -1498,6 +1753,69 @@
     window.addEventListener('pointermove', e=>{x=e.clientX;y=e.clientY;});
     function moveLight(){light.style.transform = `translate(${x-210}px, ${y-210}px)`;requestAnimationFrame(moveLight)}
     moveLight();
+  
+
+    /* Readability + motion enhancement layer */
+    const enhancedNav = document.querySelector('.nav');
+    const syncEnhancedNav = ()=>{
+      if(enhancedNav) enhancedNav.classList.toggle('nav-scrolled', window.scrollY > 18);
+    };
+    window.addEventListener('scroll', syncEnhancedNav, {passive:true});
+    syncEnhancedNav();
+
+    const readabilityTargets = [
+      ...document.querySelectorAll([
+        '.section-copy',
+        '.card p',
+        '.case-body p',
+        '.case-role',
+        '.step p',
+        '.about-text',
+        '.about-row p',
+        '.about-info-card p',
+        '.lumarium-copy p',
+        '.ai-content-card p',
+        '.ai-content-action p',
+        '.footer-lead',
+        '.stat-label',
+        '.micro-card',
+        '.resume-card li'
+      ].join(','))
+    ];
+
+    if(!reduceMotion){
+      document.body.classList.add('motion-ready');
+
+      readabilityTargets.forEach((item,index)=>{
+        item.classList.add('readability-item');
+        item.style.setProperty('--read-delay', `${(index % 4) * 55}ms`);
+      });
+
+      const readabilityObserver = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-readable');
+            readabilityObserver.unobserve(entry.target);
+          }
+        });
+      },{threshold:.10,rootMargin:'0px 0px -6% 0px'});
+      readabilityTargets.forEach(item=>readabilityObserver.observe(item));
+
+      const readingSections = document.querySelectorAll('main section, footer');
+      const readingSectionObserver = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('reading-active');
+            readingSectionObserver.unobserve(entry.target);
+          }
+        });
+      },{threshold:.16,rootMargin:'0px 0px -12% 0px'});
+      readingSections.forEach(section=>readingSectionObserver.observe(section));
+    } else {
+      readabilityTargets.forEach(item=>item.classList.add('readability-item','is-readable'));
+      document.querySelectorAll('main section, footer').forEach(section=>section.classList.add('reading-active'));
+    }
+
   </script>
 </body>
 </html>
